@@ -1,0 +1,710 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		479107B3FB16519999635AA2 /* Pods_Pure_DividendsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A8DD2DFE0716AEB7596B29 /* Pods_Pure_DividendsTests.framework */; };
+		6305869D06691DEC8D0AFAE1 /* Pods_Pure_Dividends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C62E16E298C3603CCC0EED /* Pods_Pure_Dividends.framework */; };
+		D6BA4CCE967F0A4FEC9E39AB /* Pods_Pure_DividendsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72186F2B2C5311AD6BB13230 /* Pods_Pure_DividendsUITests.framework */; };
+		FA97D92A22A23D1B003529EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97D92922A23D1B003529EC /* AppDelegate.swift */; };
+		FA97D92C22A23D1B003529EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97D92B22A23D1B003529EC /* ViewController.swift */; };
+		FA97D92F22A23D1B003529EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA97D92D22A23D1B003529EC /* Main.storyboard */; };
+		FA97D93122A23D1B003529EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA97D93022A23D1B003529EC /* Assets.xcassets */; };
+		FA97D93422A23D1B003529EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA97D93222A23D1B003529EC /* LaunchScreen.storyboard */; };
+		FA97D93F22A23D1C003529EC /* Pure_DividendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97D93E22A23D1C003529EC /* Pure_DividendsTests.swift */; };
+		FA97D94A22A23D1C003529EC /* Pure_DividendsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97D94922A23D1C003529EC /* Pure_DividendsUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA97D93B22A23D1C003529EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA97D91E22A23D1B003529EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA97D92522A23D1B003529EC;
+			remoteInfo = "Pure Dividends";
+		};
+		FA97D94622A23D1C003529EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA97D91E22A23D1B003529EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA97D92522A23D1B003529EC;
+			remoteInfo = "Pure Dividends";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		06BE5E5FE94B9401BF969F32 /* Pods-Pure DividendsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure DividendsUITests.debug.xcconfig"; path = "Target Support Files/Pods-Pure DividendsUITests/Pods-Pure DividendsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		116FAB4BF6E7473C014D3694 /* Pods-Pure DividendsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure DividendsTests.release.xcconfig"; path = "Target Support Files/Pods-Pure DividendsTests/Pods-Pure DividendsTests.release.xcconfig"; sourceTree = "<group>"; };
+		43A8DD2DFE0716AEB7596B29 /* Pods_Pure_DividendsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_DividendsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		72186F2B2C5311AD6BB13230 /* Pods_Pure_DividendsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_DividendsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		822460F7C2078C912C59353E /* Pods-Pure Dividends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends.debug.xcconfig"; path = "Target Support Files/Pods-Pure Dividends/Pods-Pure Dividends.debug.xcconfig"; sourceTree = "<group>"; };
+		A3AF0AF377115B094567B429 /* Pods-Pure Dividends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends.release.xcconfig"; path = "Target Support Files/Pods-Pure Dividends/Pods-Pure Dividends.release.xcconfig"; sourceTree = "<group>"; };
+		A6FA8C794C2A9AAC882B8D6E /* Pods-Pure DividendsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure DividendsUITests.release.xcconfig"; path = "Target Support Files/Pods-Pure DividendsUITests/Pods-Pure DividendsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E2C62E16E298C3603CCC0EED /* Pods_Pure_Dividends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_Dividends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA97D92622A23D1B003529EC /* Pure Dividends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pure Dividends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA97D92922A23D1B003529EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA97D92B22A23D1B003529EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA97D92E22A23D1B003529EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA97D93022A23D1B003529EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA97D93322A23D1B003529EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FA97D93522A23D1B003529EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA97D93A22A23D1C003529EC /* Pure DividendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pure DividendsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA97D93E22A23D1C003529EC /* Pure_DividendsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pure_DividendsTests.swift; sourceTree = "<group>"; };
+		FA97D94022A23D1C003529EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA97D94522A23D1C003529EC /* Pure DividendsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pure DividendsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA97D94922A23D1C003529EC /* Pure_DividendsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pure_DividendsUITests.swift; sourceTree = "<group>"; };
+		FA97D94B22A23D1C003529EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCD7A7C0BFD4521E10D25BC5 /* Pods-Pure DividendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure DividendsTests.debug.xcconfig"; path = "Target Support Files/Pods-Pure DividendsTests/Pods-Pure DividendsTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA97D92322A23D1B003529EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6305869D06691DEC8D0AFAE1 /* Pods_Pure_Dividends.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA97D93722A23D1C003529EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				479107B3FB16519999635AA2 /* Pods_Pure_DividendsTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA97D94222A23D1C003529EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6BA4CCE967F0A4FEC9E39AB /* Pods_Pure_DividendsUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D9BDEE4C23E4DD733DACC70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				822460F7C2078C912C59353E /* Pods-Pure Dividends.debug.xcconfig */,
+				A3AF0AF377115B094567B429 /* Pods-Pure Dividends.release.xcconfig */,
+				FCD7A7C0BFD4521E10D25BC5 /* Pods-Pure DividendsTests.debug.xcconfig */,
+				116FAB4BF6E7473C014D3694 /* Pods-Pure DividendsTests.release.xcconfig */,
+				06BE5E5FE94B9401BF969F32 /* Pods-Pure DividendsUITests.debug.xcconfig */,
+				A6FA8C794C2A9AAC882B8D6E /* Pods-Pure DividendsUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F4DA4B866466D4D8AD5DF262 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2C62E16E298C3603CCC0EED /* Pods_Pure_Dividends.framework */,
+				43A8DD2DFE0716AEB7596B29 /* Pods_Pure_DividendsTests.framework */,
+				72186F2B2C5311AD6BB13230 /* Pods_Pure_DividendsUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA97D91D22A23D1B003529EC = {
+			isa = PBXGroup;
+			children = (
+				FA97D92822A23D1B003529EC /* Pure Dividends */,
+				FA97D93D22A23D1C003529EC /* Pure DividendsTests */,
+				FA97D94822A23D1C003529EC /* Pure DividendsUITests */,
+				FA97D92722A23D1B003529EC /* Products */,
+				0D9BDEE4C23E4DD733DACC70 /* Pods */,
+				F4DA4B866466D4D8AD5DF262 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FA97D92722A23D1B003529EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA97D92622A23D1B003529EC /* Pure Dividends.app */,
+				FA97D93A22A23D1C003529EC /* Pure DividendsTests.xctest */,
+				FA97D94522A23D1C003529EC /* Pure DividendsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA97D92822A23D1B003529EC /* Pure Dividends */ = {
+			isa = PBXGroup;
+			children = (
+				FA97D92922A23D1B003529EC /* AppDelegate.swift */,
+				FA97D92B22A23D1B003529EC /* ViewController.swift */,
+				FA97D92D22A23D1B003529EC /* Main.storyboard */,
+				FA97D93022A23D1B003529EC /* Assets.xcassets */,
+				FA97D93222A23D1B003529EC /* LaunchScreen.storyboard */,
+				FA97D93522A23D1B003529EC /* Info.plist */,
+			);
+			path = "Pure Dividends";
+			sourceTree = "<group>";
+		};
+		FA97D93D22A23D1C003529EC /* Pure DividendsTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA97D93E22A23D1C003529EC /* Pure_DividendsTests.swift */,
+				FA97D94022A23D1C003529EC /* Info.plist */,
+			);
+			path = "Pure DividendsTests";
+			sourceTree = "<group>";
+		};
+		FA97D94822A23D1C003529EC /* Pure DividendsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA97D94922A23D1C003529EC /* Pure_DividendsUITests.swift */,
+				FA97D94B22A23D1C003529EC /* Info.plist */,
+			);
+			path = "Pure DividendsUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA97D92522A23D1B003529EC /* Pure Dividends */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA97D94E22A23D1C003529EC /* Build configuration list for PBXNativeTarget "Pure Dividends" */;
+			buildPhases = (
+				A24F4240573DCC44A69157DE /* [CP] Check Pods Manifest.lock */,
+				FA97D92222A23D1B003529EC /* Sources */,
+				FA97D92322A23D1B003529EC /* Frameworks */,
+				FA97D92422A23D1B003529EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pure Dividends";
+			productName = "Pure Dividends";
+			productReference = FA97D92622A23D1B003529EC /* Pure Dividends.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA97D93922A23D1C003529EC /* Pure DividendsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA97D95122A23D1C003529EC /* Build configuration list for PBXNativeTarget "Pure DividendsTests" */;
+			buildPhases = (
+				C2EF75E5EDD151AF4E7A0D04 /* [CP] Check Pods Manifest.lock */,
+				FA97D93622A23D1C003529EC /* Sources */,
+				FA97D93722A23D1C003529EC /* Frameworks */,
+				FA97D93822A23D1C003529EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA97D93C22A23D1C003529EC /* PBXTargetDependency */,
+			);
+			name = "Pure DividendsTests";
+			productName = "Pure DividendsTests";
+			productReference = FA97D93A22A23D1C003529EC /* Pure DividendsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA97D94422A23D1C003529EC /* Pure DividendsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA97D95422A23D1C003529EC /* Build configuration list for PBXNativeTarget "Pure DividendsUITests" */;
+			buildPhases = (
+				60C56135EE6E54D9584C7F19 /* [CP] Check Pods Manifest.lock */,
+				FA97D94122A23D1C003529EC /* Sources */,
+				FA97D94222A23D1C003529EC /* Frameworks */,
+				FA97D94322A23D1C003529EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA97D94722A23D1C003529EC /* PBXTargetDependency */,
+			);
+			name = "Pure DividendsUITests";
+			productName = "Pure DividendsUITests";
+			productReference = FA97D94522A23D1C003529EC /* Pure DividendsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA97D91E22A23D1B003529EC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "The iOS Interview Guide";
+				TargetAttributes = {
+					FA97D92522A23D1B003529EC = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					FA97D93922A23D1C003529EC = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = FA97D92522A23D1B003529EC;
+					};
+					FA97D94422A23D1C003529EC = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = FA97D92522A23D1B003529EC;
+					};
+				};
+			};
+			buildConfigurationList = FA97D92122A23D1B003529EC /* Build configuration list for PBXProject "Pure Dividends" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA97D91D22A23D1B003529EC;
+			productRefGroup = FA97D92722A23D1B003529EC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA97D92522A23D1B003529EC /* Pure Dividends */,
+				FA97D93922A23D1C003529EC /* Pure DividendsTests */,
+				FA97D94422A23D1C003529EC /* Pure DividendsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA97D92422A23D1B003529EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA97D93422A23D1B003529EC /* LaunchScreen.storyboard in Resources */,
+				FA97D93122A23D1B003529EC /* Assets.xcassets in Resources */,
+				FA97D92F22A23D1B003529EC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA97D93822A23D1C003529EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA97D94322A23D1C003529EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		60C56135EE6E54D9584C7F19 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pure DividendsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A24F4240573DCC44A69157DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pure Dividends-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2EF75E5EDD151AF4E7A0D04 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pure DividendsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA97D92222A23D1B003529EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA97D92C22A23D1B003529EC /* ViewController.swift in Sources */,
+				FA97D92A22A23D1B003529EC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA97D93622A23D1C003529EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA97D93F22A23D1C003529EC /* Pure_DividendsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA97D94122A23D1C003529EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA97D94A22A23D1C003529EC /* Pure_DividendsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA97D93C22A23D1C003529EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA97D92522A23D1B003529EC /* Pure Dividends */;
+			targetProxy = FA97D93B22A23D1C003529EC /* PBXContainerItemProxy */;
+		};
+		FA97D94722A23D1C003529EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA97D92522A23D1B003529EC /* Pure Dividends */;
+			targetProxy = FA97D94622A23D1C003529EC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA97D92D22A23D1B003529EC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA97D92E22A23D1B003529EC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FA97D93222A23D1B003529EC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA97D93322A23D1B003529EC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA97D94C22A23D1C003529EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA97D94D22A23D1C003529EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA97D94F22A23D1C003529EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 822460F7C2078C912C59353E /* Pods-Pure Dividends.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SAT7295W5H;
+				INFOPLIST_FILE = "Pure Dividends/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iosinterviewguide.Pure-Dividends";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA97D95022A23D1C003529EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3AF0AF377115B094567B429 /* Pods-Pure Dividends.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SAT7295W5H;
+				INFOPLIST_FILE = "Pure Dividends/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iosinterviewguide.Pure-Dividends";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FA97D95222A23D1C003529EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCD7A7C0BFD4521E10D25BC5 /* Pods-Pure DividendsTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SAT7295W5H;
+				INFOPLIST_FILE = "Pure DividendsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iosinterviewguide.Pure-DividendsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pure Dividends.app/Pure Dividends";
+			};
+			name = Debug;
+		};
+		FA97D95322A23D1C003529EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 116FAB4BF6E7473C014D3694 /* Pods-Pure DividendsTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SAT7295W5H;
+				INFOPLIST_FILE = "Pure DividendsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iosinterviewguide.Pure-DividendsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pure Dividends.app/Pure Dividends";
+			};
+			name = Release;
+		};
+		FA97D95522A23D1C003529EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06BE5E5FE94B9401BF969F32 /* Pods-Pure DividendsUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SAT7295W5H;
+				INFOPLIST_FILE = "Pure DividendsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iosinterviewguide.Pure-DividendsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Pure Dividends";
+			};
+			name = Debug;
+		};
+		FA97D95622A23D1C003529EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6FA8C794C2A9AAC882B8D6E /* Pods-Pure DividendsUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SAT7295W5H;
+				INFOPLIST_FILE = "Pure DividendsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iosinterviewguide.Pure-DividendsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Pure Dividends";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA97D92122A23D1B003529EC /* Build configuration list for PBXProject "Pure Dividends" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA97D94C22A23D1C003529EC /* Debug */,
+				FA97D94D22A23D1C003529EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA97D94E22A23D1C003529EC /* Build configuration list for PBXNativeTarget "Pure Dividends" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA97D94F22A23D1C003529EC /* Debug */,
+				FA97D95022A23D1C003529EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA97D95122A23D1C003529EC /* Build configuration list for PBXNativeTarget "Pure DividendsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA97D95222A23D1C003529EC /* Debug */,
+				FA97D95322A23D1C003529EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA97D95422A23D1C003529EC /* Build configuration list for PBXNativeTarget "Pure DividendsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA97D95522A23D1C003529EC /* Debug */,
+				FA97D95622A23D1C003529EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA97D91E22A23D1B003529EC /* Project object */;
+}

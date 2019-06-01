@@ -1,0 +1,6 @@
+framework module Pods_Pure_DividendsUITests {
+  umbrella header "Pods-Pure DividendsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_Pure_Dividends {
+  umbrella header "Pods-Pure Dividends-umbrella.h"
+
+  export *
+  module * { export * }
+}
