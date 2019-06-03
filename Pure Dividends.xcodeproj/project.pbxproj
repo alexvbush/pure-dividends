@@ -17,6 +17,7 @@
 		FA97D93422A23D1B003529EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA97D93222A23D1B003529EC /* LaunchScreen.storyboard */; };
 		FA97D93F22A23D1C003529EC /* Pure_DividendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97D93E22A23D1C003529EC /* Pure_DividendsTests.swift */; };
 		FA97D94A22A23D1C003529EC /* Pure_DividendsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97D94922A23D1C003529EC /* Pure_DividendsUITests.swift */; };
+		FA97D95822A243DF003529EC /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97D95722A243DF003529EC /* PortfolioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		FA97D94522A23D1C003529EC /* Pure DividendsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pure DividendsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA97D94922A23D1C003529EC /* Pure_DividendsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pure_DividendsUITests.swift; sourceTree = "<group>"; };
 		FA97D94B22A23D1C003529EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA97D95722A243DF003529EC /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		FCD7A7C0BFD4521E10D25BC5 /* Pods-Pure DividendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure DividendsTests.debug.xcconfig"; path = "Target Support Files/Pods-Pure DividendsTests/Pods-Pure DividendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,7 +101,6 @@
 				06BE5E5FE94B9401BF969F32 /* Pods-Pure DividendsUITests.debug.xcconfig */,
 				A6FA8C794C2A9AAC882B8D6E /* Pods-Pure DividendsUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -144,6 +145,7 @@
 				FA97D93022A23D1B003529EC /* Assets.xcassets */,
 				FA97D93222A23D1B003529EC /* LaunchScreen.storyboard */,
 				FA97D93522A23D1B003529EC /* Info.plist */,
+				FA97D95722A243DF003529EC /* PortfolioViewController.swift */,
 			);
 			path = "Pure Dividends";
 			sourceTree = "<group>";
@@ -177,6 +179,7 @@
 				FA97D92222A23D1B003529EC /* Sources */,
 				FA97D92322A23D1B003529EC /* Frameworks */,
 				FA97D92422A23D1B003529EC /* Resources */,
+				ABB1F0234184AA1624843CBE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -340,6 +343,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		ABB1F0234184AA1624843CBE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pure Dividends/Pods-Pure Dividends-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pure Dividends/Pods-Pure Dividends-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pure Dividends/Pods-Pure Dividends-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C2EF75E5EDD151AF4E7A0D04 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -370,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA97D92C22A23D1B003529EC /* ViewController.swift in Sources */,
+				FA97D95822A243DF003529EC /* PortfolioViewController.swift in Sources */,
 				FA97D92A22A23D1B003529EC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
