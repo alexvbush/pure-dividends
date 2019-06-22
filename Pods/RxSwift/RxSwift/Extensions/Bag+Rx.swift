@@ -10,11 +10,17 @@
 // MARK: forEach
 
 @inline(__always)
-func dispatch<Element>(_ bag: Bag<(Event<Element>) -> Void>, _ event: Event<Element>) {
-    bag._value0?(event)
-
+func dispatch<E>(_ bag: Bag<(Event<E>) -> ()>, _ event: Event<E>) {
     if bag._onlyFastPath {
+        bag._value0?(event)
         return
+    }
+
+    let value0 = bag._value0
+    let dictionary = bag._dictionary
+
+    if let value0 = value0 {
+        value0(event)
     }
 
     let pairs = bag._pairs
@@ -22,7 +28,7 @@ func dispatch<Element>(_ bag: Bag<(Event<Element>) -> Void>, _ event: Event<Elem
         pairs[i].value(event)
     }
 
-    if let dictionary = bag._dictionary {
+    if let dictionary = dictionary {
         for element in dictionary.values {
             element(event)
         }
@@ -31,10 +37,16 @@ func dispatch<Element>(_ bag: Bag<(Event<Element>) -> Void>, _ event: Event<Elem
 
 /// Dispatches `dispose` to all disposables contained inside bag.
 func disposeAll(in bag: Bag<Disposable>) {
-    bag._value0?.dispose()
-
     if bag._onlyFastPath {
+        bag._value0?.dispose()
         return
+    }
+
+    let value0 = bag._value0
+    let dictionary = bag._dictionary
+
+    if let value0 = value0 {
+        value0.dispose()
     }
 
     let pairs = bag._pairs
@@ -42,7 +54,7 @@ func disposeAll(in bag: Bag<Disposable>) {
         pairs[i].value.dispose()
     }
 
-    if let dictionary = bag._dictionary {
+    if let dictionary = dictionary {
         for element in dictionary.values {
             element.dispose()
         }

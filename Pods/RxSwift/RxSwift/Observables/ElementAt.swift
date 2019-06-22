@@ -17,51 +17,51 @@ extension ObservableType {
      - returns: An observable sequence that emits the desired element as its own sole emission.
      */
     public func elementAt(_ index: Int)
-        -> Observable<Element> {
-        return ElementAt(source: self.asObservable(), index: index, throwOnEmpty: true)
+        -> Observable<E> {
+        return ElementAt(source: asObservable(), index: index, throwOnEmpty: true)
     }
 }
 
-final private class ElementAtSink<Observer: ObserverType>: Sink<Observer>, ObserverType {
-    typealias SourceType = Observer.Element
+final fileprivate class ElementAtSink<O: ObserverType> : Sink<O>, ObserverType {
+    typealias SourceType = O.E
     typealias Parent = ElementAt<SourceType>
     
     let _parent: Parent
     var _i: Int
     
-    init(parent: Parent, observer: Observer, cancel: Cancelable) {
-        self._parent = parent
-        self._i = parent._index
+    init(parent: Parent, observer: O, cancel: Cancelable) {
+        _parent = parent
+        _i = parent._index
         
         super.init(observer: observer, cancel: cancel)
     }
     
     func on(_ event: Event<SourceType>) {
         switch event {
-        case .next:
+        case .next(_):
 
-            if self._i == 0 {
-                self.forwardOn(event)
-                self.forwardOn(.completed)
+            if (_i == 0) {
+                forwardOn(event)
+                forwardOn(.completed)
                 self.dispose()
             }
             
             do {
-                _ = try decrementChecked(&self._i)
-            } catch let e {
-                self.forwardOn(.error(e))
-                self.dispose()
+                let _ = try decrementChecked(&_i)
+            } catch(let e) {
+                forwardOn(.error(e))
+                dispose()
                 return
             }
             
         case .error(let e):
-            self.forwardOn(.error(e))
+            forwardOn(.error(e))
             self.dispose()
         case .completed:
-            if self._parent._throwOnEmpty {
-                self.forwardOn(.error(RxError.argumentOutOfRange))
+            if (_parent._throwOnEmpty) {
+                forwardOn(.error(RxError.argumentOutOfRange))
             } else {
-                self.forwardOn(.completed)
+                forwardOn(.completed)
             }
             
             self.dispose()
@@ -69,7 +69,8 @@ final private class ElementAtSink<Observer: ObserverType>: Sink<Observer>, Obser
     }
 }
 
-final private class ElementAt<SourceType>: Producer<SourceType> {
+final fileprivate class ElementAt<SourceType> : Producer<SourceType> {
+    
     let _source: Observable<SourceType>
     let _throwOnEmpty: Bool
     let _index: Int
@@ -84,9 +85,9 @@ final private class ElementAt<SourceType>: Producer<SourceType> {
         self._throwOnEmpty = throwOnEmpty
     }
     
-    override func run<Observer: ObserverType>(_ observer: Observer, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where Observer.Element == SourceType {
+    override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == SourceType {
         let sink = ElementAtSink(parent: self, observer: observer, cancel: cancel)
-        let subscription = self._source.subscribe(sink)
+        let subscription = _source.subscribe(sink)
         return (sink: sink, subscription: subscription)
     }
 }

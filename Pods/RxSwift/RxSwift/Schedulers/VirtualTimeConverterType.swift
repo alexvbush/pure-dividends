@@ -6,8 +6,6 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
-
 /// Parametrization for virtual time used by `VirtualTimeScheduler`s.
 public protocol VirtualTimeConverterType {
     /// Virtual time unit used that represents ticks of virtual clock.
@@ -38,15 +36,15 @@ public protocol VirtualTimeConverterType {
      - parameter virtualTimeInterval: Virtual time interval to convert to `NSTimeInterval`.
      - returns: `NSTimeInterval` corresponding to virtual time interval.
     */
-    func convertFromVirtualTimeInterval(_ virtualTimeInterval: VirtualTimeIntervalUnit) -> TimeInterval
+    func convertFromVirtualTimeInterval(_ virtualTimeInterval: VirtualTimeIntervalUnit) -> RxTimeInterval
 
     /**
-     Converts from `NSTimeInterval` to virtual time interval.
+     Converts from virtual time interval to `NSTimeInterval`.
      
      - parameter timeInterval: `NSTimeInterval` to convert to virtual time interval.
      - returns: Virtual time interval corresponding to time interval.
     */
-    func convertToVirtualTimeInterval(_ timeInterval: TimeInterval) -> VirtualTimeIntervalUnit
+    func convertToVirtualTimeInterval(_ timeInterval: RxTimeInterval) -> VirtualTimeIntervalUnit
 
     /**
      Offsets virtual time by virtual time interval.
@@ -58,7 +56,7 @@ public protocol VirtualTimeConverterType {
     func offsetVirtualTime(_ time: VirtualTimeUnit, offset: VirtualTimeIntervalUnit) -> VirtualTimeUnit
 
     /**
-     This is additional abstraction because `Date` is unfortunately not comparable.
+     This is aditional abstraction because `Date` is unfortunately not comparable.
      Extending `Date` with `Comparable` would be too risky because of possible collisions with other libraries.
     */
     func compareVirtualTime(_ lhs: VirtualTimeUnit, _ rhs: VirtualTimeUnit) -> VirtualTimeComparison
@@ -67,7 +65,7 @@ public protocol VirtualTimeConverterType {
 /**
  Virtual time comparison result.
 
- This is additional abstraction because `Date` is unfortunately not comparable.
+ This is aditional abstraction because `Date` is unfortunately not comparable.
  Extending `Date` with `Comparable` would be too risky because of possible collisions with other libraries.
 */
 public enum VirtualTimeComparison {

@@ -23,17 +23,17 @@ extension ObservableType {
      - returns: The throttled sequence.
      */
     public func throttle(_ dueTime: RxTimeInterval, latest: Bool = true, scheduler: SchedulerType)
-        -> Observable<Element> {
+        -> Observable<E> {
         return Throttle(source: self.asObservable(), dueTime: dueTime, latest: latest, scheduler: scheduler)
     }
 }
 
-final private class ThrottleSink<Observer: ObserverType>
-    : Sink<Observer>
+final fileprivate class ThrottleSink<O: ObserverType>
+    : Sink<O>
     , ObserverType
     , LockOwnerType
     , SynchronizedOnType {
-    typealias Element = Observer.Element 
+    typealias Element = O.E
     typealias ParentType = Throttle<Element>
     
     private let _parent: ParentType
@@ -41,116 +41,120 @@ final private class ThrottleSink<Observer: ObserverType>
     let _lock = RecursiveLock()
     
     // state
-    private var _lastUnsentElement: Element?
-    private var _lastSentTime: Date?
+    private var _lastUnsentElement: Element? = nil
+    private var _lastSentTime: Date? = nil
     private var _completed: Bool = false
 
     let cancellable = SerialDisposable()
     
-    init(parent: ParentType, observer: Observer, cancel: Cancelable) {
-        self._parent = parent
+    init(parent: ParentType, observer: O, cancel: Cancelable) {
+        _parent = parent
         
         super.init(observer: observer, cancel: cancel)
     }
     
     func run() -> Disposable {
-        let subscription = self._parent._source.subscribe(self)
+        let subscription = _parent._source.subscribe(self)
         
         return Disposables.create(subscription, cancellable)
     }
 
     func on(_ event: Event<Element>) {
-        self.synchronizedOn(event)
+        synchronizedOn(event)
     }
 
     func _synchronized_on(_ event: Event<Element>) {
         switch event {
         case .next(let element):
-            let now = self._parent._scheduler.now
+            let now = _parent._scheduler.now
 
-            let reducedScheduledTime: RxTimeInterval
+            let timeIntervalSinceLast: RxTimeInterval
 
-            if let lastSendingTime = self._lastSentTime {
-                reducedScheduledTime = self._parent._dueTime.reduceWithSpanBetween(earlierDate: lastSendingTime, laterDate: now)
+            if let lastSendingTime = _lastSentTime {
+                timeIntervalSinceLast = now.timeIntervalSince(lastSendingTime)
             }
             else {
-                reducedScheduledTime = .nanoseconds(0)
+                timeIntervalSinceLast = _parent._dueTime
             }
 
-            if reducedScheduledTime.isNow {
+            let couldSendNow = timeIntervalSinceLast >= _parent._dueTime
+
+            if couldSendNow {
                 self.sendNow(element: element)
                 return
             }
 
-            if !self._parent._latest {
+            if !_parent._latest {
                 return
             }
 
-            let isThereAlreadyInFlightRequest = self._lastUnsentElement != nil
+            let isThereAlreadyInFlightRequest = _lastUnsentElement != nil
             
-            self._lastUnsentElement = element
+            _lastUnsentElement = element
 
             if isThereAlreadyInFlightRequest {
                 return
             }
 
-            let scheduler = self._parent._scheduler
+            let scheduler = _parent._scheduler
+            let dueTime = _parent._dueTime
 
             let d = SingleAssignmentDisposable()
             self.cancellable.disposable = d
 
-            d.setDisposable(scheduler.scheduleRelative(0, dueTime: reducedScheduledTime, action: self.propagate))
+            d.setDisposable(scheduler.scheduleRelative(0, dueTime: dueTime - timeIntervalSinceLast, action: self.propagate))
         case .error:
-            self._lastUnsentElement = nil
-            self.forwardOn(event)
-            self.dispose()
+            _lastUnsentElement = nil
+            forwardOn(event)
+            dispose()
         case .completed:
-            if self._lastUnsentElement != nil {
-                self._completed = true
+            if let _ = _lastUnsentElement {
+                _completed = true
             }
             else {
-                self.forwardOn(.completed)
-                self.dispose()
+                forwardOn(.completed)
+                dispose()
             }
         }
     }
 
     private func sendNow(element: Element) {
-        self._lastUnsentElement = nil
+        _lastUnsentElement = nil
         self.forwardOn(.next(element))
         // in case element processing takes a while, this should give some more room
-        self._lastSentTime = self._parent._scheduler.now
+        _lastSentTime = _parent._scheduler.now
     }
     
     func propagate(_: Int) -> Disposable {
-        self._lock.lock(); defer { self._lock.unlock() } // {
-            if let lastUnsentElement = self._lastUnsentElement {
-                self.sendNow(element: lastUnsentElement)
+        _lock.lock(); defer { _lock.unlock() } // {
+            if let lastUnsentElement = _lastUnsentElement {
+                sendNow(element: lastUnsentElement)
             }
 
-            if self._completed {
-                self.forwardOn(.completed)
-                self.dispose()
+            if _completed {
+                forwardOn(.completed)
+                dispose()
             }
         // }
         return Disposables.create()
     }
 }
 
-final private class Throttle<Element>: Producer<Element> {
+final fileprivate class Throttle<Element> : Producer<Element> {
+    
     fileprivate let _source: Observable<Element>
     fileprivate let _dueTime: RxTimeInterval
     fileprivate let _latest: Bool
     fileprivate let _scheduler: SchedulerType
 
     init(source: Observable<Element>, dueTime: RxTimeInterval, latest: Bool, scheduler: SchedulerType) {
-        self._source = source
-        self._dueTime = dueTime
-        self._latest = latest
-        self._scheduler = scheduler
+        _source = source
+        _dueTime = dueTime
+        _latest = latest
+        _scheduler = scheduler
     }
     
-    override func run<Observer: ObserverType>(_ observer: Observer, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where Observer.Element == Element {
+    override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Element {
         let sink = ThrottleSink(parent: self, observer: observer, cancel: cancel)
         let subscription = sink.run()
         return (sink: sink, subscription: subscription)

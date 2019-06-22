@@ -16,70 +16,70 @@ extension ObservableType {
      - parameter predicate: A function to test each element for a condition.
      - returns: An observable sequence that contains the elements from the input sequence that occur before the element at which the test no longer passes.
      */
-    public func takeWhile(_ predicate: @escaping (Element) throws -> Bool)
-        -> Observable<Element> {
-        return TakeWhile(source: self.asObservable(), predicate: predicate)
+    public func takeWhile(_ predicate: @escaping (E) throws -> Bool)
+        -> Observable<E> {
+        return TakeWhile(source: asObservable(), predicate: predicate)
     }
 }
 
-final private class TakeWhileSink<Observer: ObserverType>
-    : Sink<Observer>
+final fileprivate class TakeWhileSink<O: ObserverType>
+    : Sink<O>
     , ObserverType {
-    typealias Element = Observer.Element 
+    typealias Element = O.E
     typealias Parent = TakeWhile<Element>
 
     fileprivate let _parent: Parent
 
     fileprivate var _running = true
 
-    init(parent: Parent, observer: Observer, cancel: Cancelable) {
-        self._parent = parent
+    init(parent: Parent, observer: O, cancel: Cancelable) {
+        _parent = parent
         super.init(observer: observer, cancel: cancel)
     }
     
     func on(_ event: Event<Element>) {
         switch event {
         case .next(let value):
-            if !self._running {
+            if !_running {
                 return
             }
             
             do {
-                self._running = try self._parent._predicate(value)
+                _running = try _parent._predicate(value)
             } catch let e {
-                self.forwardOn(.error(e))
-                self.dispose()
+                forwardOn(.error(e))
+                dispose()
                 return
             }
             
-            if self._running {
-                self.forwardOn(.next(value))
+            if _running {
+                forwardOn(.next(value))
             } else {
-                self.forwardOn(.completed)
-                self.dispose()
+                forwardOn(.completed)
+                dispose()
             }
         case .error, .completed:
-            self.forwardOn(event)
-            self.dispose()
+            forwardOn(event)
+            dispose()
         }
     }
     
 }
 
-final private class TakeWhile<Element>: Producer<Element> {
+final fileprivate class TakeWhile<Element>: Producer<Element> {
     typealias Predicate = (Element) throws -> Bool
 
     fileprivate let _source: Observable<Element>
     fileprivate let _predicate: Predicate
 
     init(source: Observable<Element>, predicate: @escaping Predicate) {
-        self._source = source
-        self._predicate = predicate
+        _source = source
+        _predicate = predicate
     }
 
-    override func run<Observer: ObserverType>(_ observer: Observer, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where Observer.Element == Element {
+    override func run<O : ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Element {
         let sink = TakeWhileSink(parent: self, observer: observer, cancel: cancel)
-        let subscription = self._source.subscribe(sink)
+        let subscription = _source.subscribe(sink)
         return (sink: sink, subscription: subscription)
     }
 }

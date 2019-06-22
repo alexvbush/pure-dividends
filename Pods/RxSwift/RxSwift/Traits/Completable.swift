@@ -6,10 +6,6 @@
 //  Copyright © 2017 Krunoslav Zaher. All rights reserved.
 //
 
-#if DEBUG
-import Foundation
-#endif
-
 /// Sequence containing 0 elements
 public enum CompletableTrait { }
 /// Represents a push style sequence containing 0 elements.
@@ -23,8 +19,8 @@ public enum CompletableEvent {
     case completed
 }
 
-extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swift.Never {
-    public typealias CompletableObserver = (CompletableEvent) -> Void
+public extension PrimitiveSequenceType where TraitType == CompletableTrait, ElementType == Swift.Never {
+    public typealias CompletableObserver = (CompletableEvent) -> ()
     
     /**
      Creates an observable sequence from a specified subscribe method implementation.
@@ -34,8 +30,8 @@ extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swif
      - parameter subscribe: Implementation of the resulting observable sequence's `subscribe` method.
      - returns: The observable sequence with the specified implementation for the `subscribe` method.
      */
-    public static func create(subscribe: @escaping (@escaping CompletableObserver) -> Disposable) -> PrimitiveSequence<Trait, Element> {
-        let source = Observable<Element>.create { observer in
+    public static func create(subscribe: @escaping (@escaping CompletableObserver) -> Disposable) -> PrimitiveSequence<TraitType, ElementType> {
+        let source = Observable<ElementType>.create { observer in
             return subscribe { event in
                 switch event {
                 case .error(let error):
@@ -54,7 +50,7 @@ extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swif
      
      - returns: Subscription for `observer` that can be used to cancel production of sequence elements and free resources.
      */
-    public func subscribe(_ observer: @escaping (CompletableEvent) -> Void) -> Disposable {
+    public func subscribe(_ observer: @escaping (CompletableEvent) -> ()) -> Disposable {
         var stopped = false
         return self.primitiveSequence.asObservable().subscribe { event in
             if stopped { return }
@@ -79,20 +75,10 @@ extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swif
      - returns: Subscription object used to unsubscribe from the observable sequence.
      */
     public func subscribe(onCompleted: (() -> Void)? = nil, onError: ((Swift.Error) -> Void)? = nil) -> Disposable {
-        #if DEBUG
-                let callStack = Hooks.recordCallStackOnError ? Thread.callStackSymbols : []
-        #else
-                let callStack = [String]()
-        #endif
-
         return self.primitiveSequence.subscribe { event in
             switch event {
             case .error(let error):
-                if let onError = onError {
-                    onError(error)
-                } else {
-                    Hooks.defaultErrorHandler(callStack, error)
-                }
+                onError?(error)
             case .completed:
                 onCompleted?()
             }
@@ -100,7 +86,7 @@ extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swif
     }
 }
 
-extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swift.Never {
+public extension PrimitiveSequenceType where TraitType == CompletableTrait, ElementType == Swift.Never {
     /**
      Returns an observable sequence that terminates with an `error`.
 
@@ -136,7 +122,7 @@ extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swif
 
 }
 
-extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swift.Never {
+public extension PrimitiveSequenceType where TraitType == CompletableTrait, ElementType == Swift.Never {    
     /**
      Invokes an action for each event in the observable sequence, and propagates all observer messages through the result sequence.
      
@@ -144,27 +130,21 @@ extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swif
      
      - parameter onNext: Action to invoke for each element in the observable sequence.
      - parameter onError: Action to invoke upon errored termination of the observable sequence.
-     - parameter afterError: Action to invoke after errored termination of the observable sequence.
      - parameter onCompleted: Action to invoke upon graceful termination of the observable sequence.
-     - parameter afterCompleted: Action to invoke after graceful termination of the observable sequence.
      - parameter onSubscribe: Action to invoke before subscribing to source observable sequence.
      - parameter onSubscribed: Action to invoke after subscribing to source observable sequence.
      - parameter onDispose: Action to invoke after subscription to source observable has been disposed for any reason. It can be either because sequence terminates for some reason or observer subscription being disposed.
      - returns: The source sequence with the side-effecting behavior applied.
      */
     public func `do`(onError: ((Swift.Error) throws -> Void)? = nil,
-                     afterError: ((Swift.Error) throws -> Void)? = nil,
                      onCompleted: (() throws -> Void)? = nil,
-                     afterCompleted: (() throws -> Void)? = nil,
-                     onSubscribe: (() -> Void)? = nil,
-                     onSubscribed: (() -> Void)? = nil,
-                     onDispose: (() -> Void)? = nil)
+                     onSubscribe: (() -> ())? = nil,
+                     onSubscribed: (() -> ())? = nil,
+                     onDispose: (() -> ())? = nil)
         -> Completable {
-            return Completable(raw: self.primitiveSequence.source.do(
+            return Completable(raw: primitiveSequence.source.do(
                 onError: onError,
-                afterError: afterError,
                 onCompleted: onCompleted,
-                afterCompleted: afterCompleted,
                 onSubscribe: onSubscribe,
                 onSubscribed: onSubscribed,
                 onDispose: onDispose)
@@ -182,7 +162,7 @@ extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swif
      - returns: An observable sequence that contains the elements of `self`, followed by those of the second sequence.
      */
     public func concat(_ second: Completable) -> Completable {
-        return Completable.concat(self.primitiveSequence, second)
+        return Completable.concat(primitiveSequence, second)
     }
     
     /**
@@ -192,8 +172,8 @@ extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swif
      
      - returns: An observable sequence that contains the elements of each given sequence, in sequential order.
      */
-    public static func concat<Sequence: Swift.Sequence>(_ sequence: Sequence) -> Completable
-        where Sequence.Element == Completable {
+    public static func concat<S: Sequence>(_ sequence: S) -> Completable
+        where S.Iterator.Element == Completable {
             let source = Observable.concat(sequence.lazy.map { $0.asObservable() })
             return Completable(raw: source)
     }
@@ -205,8 +185,8 @@ extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swif
      
      - returns: An observable sequence that contains the elements of each given sequence, in sequential order.
      */
-    public static func concat<Collection: Swift.Collection>(_ collection: Collection) -> Completable
-        where Collection.Element == Completable {
+    public static func concat<C: Collection>(_ collection: C) -> Completable
+        where C.Iterator.Element == Completable {
             let source = Observable.concat(collection.map { $0.asObservable() })
             return Completable(raw: source)
     }
@@ -222,46 +202,43 @@ extension PrimitiveSequenceType where Trait == CompletableTrait, Element == Swif
         let source = Observable.concat(sources.map { $0.asObservable() })
         return Completable(raw: source)
     }
-
+    
     /**
-     Merges the completion of all Completables from a collection into a single Completable.
-
+     Merges elements from all observable sequences from collection into a single observable sequence.
+     
      - seealso: [merge operator on reactivex.io](http://reactivex.io/documentation/operators/merge.html)
-     - note: For `Completable`, `zip` is an alias for `merge`.
-
-     - parameter sources: Collection of Completables to merge.
-     - returns: A Completable that merges the completion of all Completables.
-     */
-    public static func zip<Collection: Swift.Collection>(_ sources: Collection) -> Completable
-           where Collection.Element == Completable {
-        let source = Observable.merge(sources.map { $0.asObservable() })
-        return Completable(raw: source)
-    }
-
-    /**
-     Merges the completion of all Completables from an array into a single Completable.
-
-     - seealso: [merge operator on reactivex.io](http://reactivex.io/documentation/operators/merge.html)
-     - note: For `Completable`, `zip` is an alias for `merge`.
-
-     - parameter sources: Array of observable sequences to merge.
-     - returns: A Completable that merges the completion of all Completables.
-     */
-    public static func zip(_ sources: [Completable]) -> Completable {
-        let source = Observable.merge(sources.map { $0.asObservable() })
-        return Completable(raw: source)
-    }
-
-    /**
-     Merges the completion of all Completables into a single Completable.
-
-     - seealso: [merge operator on reactivex.io](http://reactivex.io/documentation/operators/merge.html)
-     - note: For `Completable`, `zip` is an alias for `merge`.
-
+     
      - parameter sources: Collection of observable sequences to merge.
      - returns: The observable sequence that merges the elements of the observable sequences.
      */
-    public static func zip(_ sources: Completable...) -> Completable {
+    public static func merge<C: Collection>(_ sources: C) -> Completable
+        where C.Iterator.Element == Completable {
+            let source = Observable.merge(sources.map { $0.asObservable() })
+            return Completable(raw: source)
+    }
+    
+    /**
+     Merges elements from all observable sequences from array into a single observable sequence.
+     
+     - seealso: [merge operator on reactivex.io](http://reactivex.io/documentation/operators/merge.html)
+     
+     - parameter sources: Array of observable sequences to merge.
+     - returns: The observable sequence that merges the elements of the observable sequences.
+     */
+    public static func merge(_ sources: [Completable]) -> Completable {
+        let source = Observable.merge(sources.map { $0.asObservable() })
+        return Completable(raw: source)
+    }
+    
+    /**
+     Merges elements from all observable sequences into a single observable sequence.
+     
+     - seealso: [merge operator on reactivex.io](http://reactivex.io/documentation/operators/merge.html)
+     
+     - parameter sources: Collection of observable sequences to merge.
+     - returns: The observable sequence that merges the elements of the observable sequences.
+     */
+    public static func merge(_ sources: Completable...) -> Completable {
         let source = Observable.merge(sources.map { $0.asObservable() })
         return Completable(raw: source)
     }

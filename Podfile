@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '12.0'
+platform :ios, '13.0'
 
 target 'Pure Dividends' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -7,9 +7,11 @@ target 'Pure Dividends' do
 
   # Pods for Pure Dividends
 
-  pod 'RxSwift'
+  pod 'RIBs', '~> 0.9.0'
+
+  pod 'RxSwift', '~> 4.0.0'
   pod 'Alamofire'
-  pod 'RxAlamofire'
+  pod 'RxAlamofire', '~> 4.0.0'
   pod 'Money-FlightSchool', '~> 1.1.1'
 
   target 'Pure DividendsTests' do

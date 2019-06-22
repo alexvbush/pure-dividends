@@ -6,9 +6,9 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-import Foundation
+import struct Foundation.Date
 
-/// Converts historical virtual time into real time.
+/// Converts historial virtual time into real time.
 ///
 /// Since historical virtual time is also measured in `Date`, this converter is identity function.
 public struct HistoricalSchedulerTimeConverter : VirtualTimeConverterType {
@@ -16,7 +16,7 @@ public struct HistoricalSchedulerTimeConverter : VirtualTimeConverterType {
     public typealias VirtualTimeUnit = RxTime
 
     /// Virtual time unit used to represent differences of virtual times.
-    public typealias VirtualTimeIntervalUnit = TimeInterval
+    public typealias VirtualTimeIntervalUnit = RxTimeInterval
 
     /// Returns identical value of argument passed because historical virtual time is equal to real time, just
     /// decoupled from local machine clock.
@@ -32,13 +32,13 @@ public struct HistoricalSchedulerTimeConverter : VirtualTimeConverterType {
 
     /// Returns identical value of argument passed because historical virtual time is equal to real time, just
     /// decoupled from local machine clock.
-    public func convertFromVirtualTimeInterval(_ virtualTimeInterval: VirtualTimeIntervalUnit) -> TimeInterval {
+    public func convertFromVirtualTimeInterval(_ virtualTimeInterval: VirtualTimeIntervalUnit) -> RxTimeInterval {
         return virtualTimeInterval
     }
 
     /// Returns identical value of argument passed because historical virtual time is equal to real time, just
     /// decoupled from local machine clock.
-    public func convertToVirtualTimeInterval(_ timeInterval: TimeInterval) -> VirtualTimeIntervalUnit {
+    public func convertToVirtualTimeInterval(_ timeInterval: RxTimeInterval) -> VirtualTimeIntervalUnit {
         return timeInterval
     }
 

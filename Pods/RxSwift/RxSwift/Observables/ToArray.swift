@@ -10,28 +10,28 @@
 extension ObservableType {
 
     /**
-    Converts an Observable into a Single that emits the whole sequence as a single array and then terminates.
+    Converts an Observable into another Observable that emits the whole sequence as a single array and then terminates.
     
     For aggregation behavior see `reduce`.
 
     - seealso: [toArray operator on reactivex.io](http://reactivex.io/documentation/operators/to.html)
     
-    - returns: A Single sequence containing all the emitted elements as array.
+    - returns: An observable sequence containing all the emitted elements as array.
     */
     public func toArray()
-        -> Single<[Element]> {
-        return PrimitiveSequence(raw: ToArray(source: self.asObservable()))
+        -> Observable<[E]> {
+        return ToArray(source: self.asObservable())
     }
 }
 
-final private class ToArraySink<SourceType, Observer: ObserverType>: Sink<Observer>, ObserverType where Observer.Element == [SourceType] {
+final fileprivate class ToArraySink<SourceType, O: ObserverType> : Sink<O>, ObserverType where O.E == [SourceType] {
     typealias Parent = ToArray<SourceType>
     
     let _parent: Parent
-    var _list = [SourceType]()
+    var _list = Array<SourceType>()
     
-    init(parent: Parent, observer: Observer, cancel: Cancelable) {
-        self._parent = parent
+    init(parent: Parent, observer: O, cancel: Cancelable) {
+        _parent = parent
         
         super.init(observer: observer, cancel: cancel)
     }
@@ -41,26 +41,26 @@ final private class ToArraySink<SourceType, Observer: ObserverType>: Sink<Observ
         case .next(let value):
             self._list.append(value)
         case .error(let e):
-            self.forwardOn(.error(e))
+            forwardOn(.error(e))
             self.dispose()
         case .completed:
-            self.forwardOn(.next(self._list))
-            self.forwardOn(.completed)
+            forwardOn(.next(_list))
+            forwardOn(.completed)
             self.dispose()
         }
     }
 }
 
-final private class ToArray<SourceType>: Producer<[SourceType]> {
+final fileprivate class ToArray<SourceType> : Producer<[SourceType]> {
     let _source: Observable<SourceType>
 
     init(source: Observable<SourceType>) {
-        self._source = source
+        _source = source
     }
     
-    override func run<Observer: ObserverType>(_ observer: Observer, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where Observer.Element == [SourceType] {
+    override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == [SourceType] {
         let sink = ToArraySink(parent: self, observer: observer, cancel: cancel)
-        let subscription = self._source.subscribe(sink)
+        let subscription = _source.subscribe(sink)
         return (sink: sink, subscription: subscription)
     }
 }

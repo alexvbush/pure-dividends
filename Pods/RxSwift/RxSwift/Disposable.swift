@@ -6,7 +6,7 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-/// Represents a disposable resource.
+/// Respresents a disposable resource.
 public protocol Disposable {
     /// Dispose resource.
     func dispose()
