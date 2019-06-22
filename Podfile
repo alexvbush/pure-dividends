@@ -10,6 +10,7 @@ target 'Pure Dividends' do
   pod 'RxSwift'
   pod 'Alamofire'
   pod 'RxAlamofire'
+  pod 'Money-FlightSchool', '~> 1.1.1'
 
   target 'Pure DividendsTests' do
     inherit! :search_paths
