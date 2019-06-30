@@ -12,12 +12,6 @@ import RxAlamofire
 import RxSwift
 import SnapKit
 
-struct StockModel {
-    let ticker: String
-    let name: String
-    let currentPrice: Double
-}
-
 final class SimplePortfolioViewController: ViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!

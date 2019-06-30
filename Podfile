@@ -10,19 +10,26 @@ target 'Pure Dividends' do
   pod 'RIBs', '~> 0.9.0'
 
   pod 'RxSwift', '~> 4.0.0'
-  pod 'Alamofire'
-  pod 'RxAlamofire', '~> 4.0.0'
   pod 'Money-FlightSchool', '~> 1.1.1'
   pod 'SnapKit', '~> 5.0.0'
 
   target 'Pure DividendsTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RxBlocking', '~> 4.0.0'
   end
 
   target 'Pure DividendsUITests' do
     inherit! :search_paths
     # Pods for testing
+  end
+
+  target 'PDNetworking' do
+    pod 'Alamofire'
+    pod 'RxAlamofire', '~> 4.0.0'
+    target 'PDNetworkingTests' do
+      pod 'RxBlocking', '~> 4.0.0'
+    end
   end
 
 end
