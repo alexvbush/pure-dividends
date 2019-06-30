@@ -11,11 +11,16 @@ import RxSwift
 
 protocol RootRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
+    
+    func routeToMainScreen()
 }
 
 protocol RootPresentable: Presentable {
     var listener: RootPresentableListener? { get set }
     // TODO: Declare methods the interactor can invoke the presenter to present data.
+    
+    func showLoggedIn()
+    func showLoggedOut()
 }
 
 protocol RootListener: class {
@@ -26,10 +31,13 @@ final class RootInteractor: PresentableInteractor<RootPresentable>, RootInteract
 
     weak var router: RootRouting?
     weak var listener: RootListener?
+    
+    private let sessionManager: SessionManagerInterface
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
-    override init(presenter: RootPresentable) {
+    init(presenter: RootPresentable, sessionManager: SessionManagerInterface) {
+        self.sessionManager = sessionManager
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -38,7 +46,12 @@ final class RootInteractor: PresentableInteractor<RootPresentable>, RootInteract
         super.didBecomeActive()
         // TODO: Implement business logic here.
         
-        print("didBecomeActive")
+        if let _ = sessionManager.currentSession() {
+            presenter.showLoggedIn()
+            router?.routeToMainScreen()
+        } else {
+            presenter.showLoggedOut()
+        }
     }
 
     override func willResignActive() {

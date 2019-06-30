@@ -31,11 +31,16 @@ final class RootViewController: UIViewController, RootPresentable, RootViewContr
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
+        
     }
     
-    // MARK: - RootViewControllable
-    func present(viewController: ViewControllable) {
-        present(viewController.uiviewController, animated: true, completion: nil)
+    // MARK: - BEGIN RootPresentable
+    func showLoggedIn() {
+        view.backgroundColor = .blue
     }
+    
+    func showLoggedOut() {
+        view.backgroundColor = .yellow
+    }
+    // MARK: RootPresentable END -
 }

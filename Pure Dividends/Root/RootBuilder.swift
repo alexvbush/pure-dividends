@@ -11,10 +11,11 @@ import RIBs
 protocol RootDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
     // created by this RIB.
+    
+    var sessionManager: SessionManagerInterface { get }
 }
 
-final class RootComponent: Component<RootDependency> {
-
+final class RootComponent: Component<RootDependency>, PortfolioDependency {
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
 
@@ -33,11 +34,12 @@ final class RootBuilder: Builder<RootDependency>, RootBuildable {
     func build() -> LaunchRouting {
         let component = RootComponent(dependency: dependency)
         let viewController = RootViewController()
-        let interactor = RootInteractor(presenter: viewController)
+        let interactor = RootInteractor(presenter: viewController,
+                                        sessionManager: component.dependency.sessionManager)
         
-//        let loggedOutBuilder = LoggedOutBuilder(dependency: component)
+        let portfolioBuilder = PortfolioBuilder(dependency: component)
         return RootRouter(interactor: interactor,
-                          viewController: viewController/*,
-                          loggedOutBuilder: loggedOutBuilder*/)
+                          viewController: viewController,
+                          portfolioBuilder: portfolioBuilder)
     }
 }

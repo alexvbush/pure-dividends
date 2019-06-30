@@ -14,4 +14,10 @@ class AppComponent: Component<EmptyDependency>, RootDependency {
     init() {
         super.init(dependency: EmptyComponent())
     }
+    
+    var sessionManager: SessionManagerInterface {
+        let sessionManager = SessionManager()
+        sessionManager.save(session: Session(token: "jslfdhk"))
+        return sessionManager
+    }
 }

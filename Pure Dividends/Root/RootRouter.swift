@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol RootInteractable: Interactable {
+protocol RootInteractable: Interactable, PortfolioListener {
     var router: RootRouting? { get set }
     var listener: RootListener? { get set }
 }
@@ -16,12 +16,22 @@ protocol RootInteractable: Interactable {
 protocol RootViewControllable: ViewControllable {
     // TODO: Declare methods the router invokes to manipulate the view hierarchy.
     func present(viewController: ViewControllable)
+    
+    func navigateTo(viewControllable: ViewControllable)
 }
 
 final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, RootRouting {
+    
+    private let portfolioBuilder: PortfolioBuildable
+    
+    private var portfolioRouter: PortfolioRouting?
 
     // TODO: Constructor inject child builder protocols to allow building children.
-    override init(interactor: RootInteractable, viewController: RootViewControllable) {
+    init(interactor: RootInteractable,
+                  viewController: RootViewControllable,
+                  portfolioBuilder: PortfolioBuildable)
+    {
+        self.portfolioBuilder = portfolioBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -31,6 +41,13 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, Ro
         super.didLoad()
         
         // one time setup logic here
-        print("didLoad router")
+    }
+    
+    func routeToMainScreen() {
+        
+        let portfolioRouter = portfolioBuilder.build(withListener: interactor)
+        self.portfolioRouter = portfolioRouter
+        attachChild(portfolioRouter)        
+        viewController.navigateTo(viewControllable: portfolioRouter.viewControllable)
     }
 }

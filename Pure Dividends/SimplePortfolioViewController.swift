@@ -10,42 +10,18 @@ import UIKit
 import Alamofire
 import RxAlamofire
 import RxSwift
+import SnapKit
 
-private struct StockModel {
+struct StockModel {
     let ticker: String
     let name: String
     let currentPrice: Double
 }
 
-private struct StockViewModel {
-    private let stock: StockModel
-    
-    init(stock: StockModel) {
-        self.stock = stock
-    }
-    
-    var ticker: String {
-        return stock.ticker
-    }
-    
-    var name: String {
-        return stock.name
-    }
-    
-    var currentPriceText: String {
-        return "$\((stock.currentPrice * 100).rounded(.toNearestOrEven) / 100)"
-    }
-}
-
-class StockCell: UITableViewCell {
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-}
-
-final class PortfolioViewController: ViewController, UITableViewDelegate, UITableViewDataSource {
+final class SimplePortfolioViewController: ViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    private let manager = SessionManager.default
+//    private let manager = SessionManager.default
     
     private var stocksModels = [StockModel(ticker: "T", name: "AT&T", currentPrice: 30.58),
                                     StockModel(ticker: "MSFT", name: "Microsoft", currentPrice: 124.12),
@@ -63,7 +39,7 @@ final class PortfolioViewController: ViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*         
         let _ = Observable.from(stocksModels).flatMap { stockModel -> Observable<(StockModel, Any)> in
             let url = URL(string: "https://sandbox.iexapis.com/v1/stock/\(stockModel.ticker)/price?token=Tsk_5b6a7d4e02db464b9447f498407d78f4")!
             return Observable.combineLatest(Observable.just(stockModel), self.manager.rx.json(.get, url))
@@ -79,6 +55,7 @@ final class PortfolioViewController: ViewController, UITableViewDelegate, UITabl
         }, onError: { (error) in
             print("error: \(error)")
         })
+        */
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
