@@ -31,7 +31,7 @@ final class RootViewController: UIViewController, RootPresentable, RootViewContr
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.yellow
+        view.backgroundColor = .yellow
     }
     
     // MARK: - RootViewControllable
