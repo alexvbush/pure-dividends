@@ -9,26 +9,27 @@
 import RIBs
 import RxSwift
 
-protocol PortfolioRouting: ViewableRouting {
-    // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
-}
+protocol PortfolioRouting: ViewableRouting {}
 
 protocol PortfolioPresentable: Presentable {
     var listener: PortfolioPresentableListener? { get set }
-    // TODO: Declare methods the interactor can invoke the presenter to present data.
+    
+    func present(stocks: [StockModel])
 }
 
-protocol PortfolioListener: class {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
-}
+protocol PortfolioListener: class {}
 
 final class PortfolioInteractor: PresentableInteractor<PortfolioPresentable>, PortfolioInteractable, PortfolioPresentableListener {
 
     weak var router: PortfolioRouting?
     weak var listener: PortfolioListener?
+    
+    private var stocksModels = [StockModel(ticker: "T", name: "AT&T", currentPrice: 30.58),
+                                StockModel(ticker: "MSFT", name: "Microsoft", currentPrice: 124.12),
+                                StockModel(ticker: "SQ", name: "Square", currentPrice: 60.5),
+                                StockModel(ticker: "SPY", name: "SPY", currentPrice: 230.78),
+                                StockModel(ticker: "TLT", name: "iShares 20+ Year Treasury Bond ETF", currentPrice: 131.83)]
 
-    // TODO: Add additional dependencies to constructor. Do not perform any logic
-    // in constructor.
     override init(presenter: PortfolioPresentable) {
         super.init(presenter: presenter)
         presenter.listener = self
@@ -36,11 +37,7 @@ final class PortfolioInteractor: PresentableInteractor<PortfolioPresentable>, Po
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        // TODO: Implement business logic here.
-    }
-
-    override func willResignActive() {
-        super.willResignActive()
-        // TODO: Pause any business logic.
+        
+        presenter.present(stocks: stocksModels)
     }
 }

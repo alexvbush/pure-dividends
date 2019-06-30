@@ -39,16 +39,20 @@ final class StockCell: UITableViewCell {
         tickerLabel.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
             maker.leading.equalToSuperview().offset(20)
+            maker.width.equalTo(50)
         }
         
         nameLabel.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
+//            maker.top.bottom.equalToSuperview()
             maker.leading.equalTo(tickerLabel.snp.trailing).offset(20)
+            maker.trailing.equalTo(priceLabel.snp.leading)
         }
         
         priceLabel.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
             maker.trailing.equalToSuperview().inset(20)
         }
+        priceLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
 }

@@ -23,21 +23,32 @@ final class PortfolioViewController: UIViewController, PortfolioPresentable, Por
     
     private lazy var internalView = PortfolioView(delegate: self)
     
+    private var stocksViewModels = [StockViewModel]()
+    
+//    private var stocksViewModels: [StockViewModel] {
+//        return stocksModels.map { StockViewModel(stock: $0) }
+        
+        //        return stocksModels.map { StockViewModel(stock: $0) }.sorted(by: { (stockVM1, stockVM2) -> Bool in
+        //            return stockVM1.ticker > stockVM2.ticker
+        //        })
+//    }
+    
     override func loadView() {
         view = internalView
     }
     
-    override func viewDidLoad() {
-        
+    func present(stocks: [StockModel]) {
+        stocksViewModels = stocks.map { StockViewModel(stock: $0) }
+        internalView.reload()
     }
     
     // MARK: - BEGIN PortfolioViewDelegate
     func numberOfStocks() -> Int {
-        return 10
+        return stocksViewModels.count
     }
     
     func stock(atIndex index: Int) -> StockViewModel {
-        return StockViewModel(stock: StockModel(ticker: "MSFT", name: "Microsoft", currentPrice: 100))
+        return stocksViewModels[index]
     }
     // MARK: END PortfolioViewDelegate -
 }
@@ -61,11 +72,15 @@ fileprivate final class PortfolioView: UIView, UITableViewDelegate, UITableViewD
         
         setupTableView()
         
-        tableView.reloadData()
+//        tableView.reloadData()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func reload() {
+        tableView.reloadData()
     }
     
     private func setupTableView() {
@@ -79,6 +94,10 @@ fileprivate final class PortfolioView: UIView, UITableViewDelegate, UITableViewD
         tableView.snp.makeConstraints { (maker) in
             maker.top.bottom.leading.trailing.equalToSuperview()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
