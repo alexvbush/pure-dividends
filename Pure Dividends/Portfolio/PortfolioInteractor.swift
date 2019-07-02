@@ -24,13 +24,16 @@ final class PortfolioInteractor: PresentableInteractor<PortfolioPresentable>, Po
     weak var router: PortfolioRouting?
     weak var listener: PortfolioListener?
     
+    private let iexService: IEXServiceInterface
+    
     private var stocksModels = [StockModel(ticker: "T", name: "AT&T", currentPrice: 30.58),
                                 StockModel(ticker: "MSFT", name: "Microsoft", currentPrice: 124.12),
                                 StockModel(ticker: "SQ", name: "Square", currentPrice: 60.5),
                                 StockModel(ticker: "SPY", name: "SPY", currentPrice: 230.78),
                                 StockModel(ticker: "TLT", name: "iShares 20+ Year Treasury Bond ETF", currentPrice: 131.83)]
 
-    override init(presenter: PortfolioPresentable) {
+    init(presenter: PortfolioPresentable, iexService: IEXServiceInterface) {
+        self.iexService = iexService
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -39,5 +42,13 @@ final class PortfolioInteractor: PresentableInteractor<PortfolioPresentable>, Po
         super.didBecomeActive()
         
         presenter.present(stocks: stocksModels)
+        
+        iexService.fetchPrices(forStocks: stocksModels).subscribe(onNext: { (updateStockModels) in
+            self.stocksModels = updateStockModels
+            self.presenter.present(stocks: updateStockModels)
+        }, onError: { (error) in
+            print("error: \(error)")
+        }).disposeOnDeactivate(interactor: self)
+
     }
 }

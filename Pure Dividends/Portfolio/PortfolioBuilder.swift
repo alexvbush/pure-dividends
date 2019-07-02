@@ -7,6 +7,8 @@
 //
 
 import RIBs
+import PDNetworking
+import Alamofire
 
 protocol PortfolioDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
@@ -16,6 +18,18 @@ protocol PortfolioDependency: Dependency {
 final class PortfolioComponent: Component<PortfolioDependency> {
 
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    
+    fileprivate var sessionManager: Alamofire.SessionManager {
+        return Alamofire.SessionManager.default
+    }
+    
+    fileprivate var iexClient: IEXClientInterface {
+        return IEXClient(manager: sessionManager)
+    }
+    
+    fileprivate var iexService: IEXServiceInterface {
+        return IEXService(client: iexClient)
+    }
 }
 
 // MARK: - Builder
@@ -33,7 +47,7 @@ final class PortfolioBuilder: Builder<PortfolioDependency>, PortfolioBuildable {
     func build(withListener listener: PortfolioListener) -> PortfolioRouting {
         let component = PortfolioComponent(dependency: dependency)
         let viewController = PortfolioViewController()
-        let interactor = PortfolioInteractor(presenter: viewController)
+        let interactor = PortfolioInteractor(presenter: viewController, iexService: component.iexService)
         interactor.listener = listener
         return PortfolioRouter(interactor: interactor, viewController: viewController)
     }

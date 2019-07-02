@@ -28,14 +28,11 @@ final class IEXService: IEXServiceInterface {
         }
     }
     
-    func fetchPrices(forStocks stocks: [StockModel]) -> Observable<[StockModel]> {
-        
+    func fetchPrices(forStocks stocks: [StockModel]) -> Observable<[StockModel]> {        
         return Observable.from(stocks).flatMap { (stock) -> Observable<StockModel> in
             return self.fetchPrice(forStock: stock)
         }.reduce([], accumulator: { (newStocks, stockModel) -> [StockModel] in
             return newStocks + [stockModel]
         })
-        
-//        return Observable.just([StockModel]())
     }
 }

@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import PDNetworking
+import Alamofire
 
 class PDNetworkingTests: XCTestCase {
 
@@ -20,8 +21,18 @@ class PDNetworkingTests: XCTestCase {
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let expectation = XCTestExpectation()
+        
+        let client = IEXClient(manager: SessionManager.default)
+        let _ = client.getPrice(ticker: "MSFT").subscribe(onNext: { (newPrice) in
+            print("new price: \(newPrice)")
+            expectation.fulfill()
+        }, onError: { (error) in
+            print("error: \(error)")
+        })
+        
+        wait(for: [expectation], timeout: 2)
     }
 
 }
