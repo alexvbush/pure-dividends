@@ -11,6 +11,7 @@ import RxSwift
 
 protocol IEXServiceInterface {
     func fetchPrice(forStock stock: StockModel) -> Observable<StockModel>
+    func fetchPrices(forStocks stocks: [StockModel]) -> Observable<[StockModel]>
 }
 
 final class IEXService: IEXServiceInterface {
@@ -25,5 +26,16 @@ final class IEXService: IEXServiceInterface {
         return iexClient.getPrice(ticker: stock.ticker).map { (newPrice) -> StockModel in
             return StockModel(ticker: stock.ticker, name: stock.name, currentPrice: newPrice)
         }
+    }
+    
+    func fetchPrices(forStocks stocks: [StockModel]) -> Observable<[StockModel]> {
+        
+        return Observable.from(stocks).flatMap { (stock) -> Observable<StockModel> in
+            return self.fetchPrice(forStock: stock)
+        }.reduce([], accumulator: { (newStocks, stockModel) -> [StockModel] in
+            return newStocks + [stockModel]
+        })
+        
+//        return Observable.just([StockModel]())
     }
 }
