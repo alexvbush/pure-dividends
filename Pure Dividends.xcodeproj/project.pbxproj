@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14243827F49BF8723E194C1F /* Pods_Pure_Dividends_PDPersistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30281D8EDEF83F2D5DA01730 /* Pods_Pure_Dividends_PDPersistence.framework */; };
 		1C0F4E706CC8C783331586F1 /* Pods_Pure_Dividends_PDNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363A2A674F31488F4E8F8C81 /* Pods_Pure_Dividends_PDNetworking.framework */; };
+		3D79721D1B3162E223C87B43 /* Pods_Pure_Dividends_PDPersistence_PDPersistenceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4AA8B21833CCA1F13569B00 /* Pods_Pure_Dividends_PDPersistence_PDPersistenceTests.framework */; };
 		479107B3FB16519999635AA2 /* Pods_Pure_DividendsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A8DD2DFE0716AEB7596B29 /* Pods_Pure_DividendsTests.framework */; };
 		6305869D06691DEC8D0AFAE1 /* Pods_Pure_Dividends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C62E16E298C3603CCC0EED /* Pods_Pure_Dividends.framework */; };
 		633BA5B5299372C7D1BCEB09 /* Pods_Pure_Dividends_PDNetworking_PDNetworkingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E82D0489A34BB993F20FE7 /* Pods_Pure_Dividends_PDNetworking_PDNetworkingTests.framework */; };
 		D6BA4CCE967F0A4FEC9E39AB /* Pods_Pure_DividendsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72186F2B2C5311AD6BB13230 /* Pods_Pure_DividendsUITests.framework */; };
+		FA6522EB22CE84C3001BEEFD /* PDPersistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6522E222CE84C3001BEEFD /* PDPersistence.framework */; };
+		FA6522F222CE84C3001BEEFD /* KeyValueStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6522F122CE84C3001BEEFD /* KeyValueStoreTests.swift */; };
+		FA6522F422CE84C3001BEEFD /* PDPersistence.h in Headers */ = {isa = PBXBuildFile; fileRef = FA6522E422CE84C3001BEEFD /* PDPersistence.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA6522F722CE84C3001BEEFD /* PDPersistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6522E222CE84C3001BEEFD /* PDPersistence.framework */; };
+		FA6522F822CE84C3001BEEFD /* PDPersistence.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA6522E222CE84C3001BEEFD /* PDPersistence.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FA65230022CE85AF001BEEFD /* KeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6522FF22CE85AF001BEEFD /* KeyValueStore.swift */; };
 		FA6661C922C83FF200E65AC7 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661C822C83FF200E65AC7 /* SessionManager.swift */; };
 		FA6661D122C8412900E65AC7 /* SessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661D022C8412900E65AC7 /* SessionManagerTests.swift */; };
 		FA6661D522C84A6500E65AC7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661D422C84A6500E65AC7 /* Session.swift */; };
@@ -50,6 +58,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FA6522EC22CE84C3001BEEFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA97D91E22A23D1B003529EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA6522E122CE84C3001BEEFD;
+			remoteInfo = PDPersistence;
+		};
+		FA6522EE22CE84C3001BEEFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA97D91E22A23D1B003529EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA97D92522A23D1B003529EC;
+			remoteInfo = "Pure Dividends";
+		};
+		FA6522F522CE84C3001BEEFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA97D91E22A23D1B003529EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA6522E122CE84C3001BEEFD;
+			remoteInfo = PDPersistence;
+		};
 		FA66620022C9607400E65AC7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA97D91E22A23D1B003529EC /* Project object */;
@@ -94,6 +123,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FA6522F822CE84C3001BEEFD /* PDPersistence.framework in Embed Frameworks */,
 				FA66620C22C9607400E65AC7 /* PDNetworking.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -104,8 +134,11 @@
 /* Begin PBXFileReference section */
 		06BE5E5FE94B9401BF969F32 /* Pods-Pure DividendsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure DividendsUITests.debug.xcconfig"; path = "Target Support Files/Pods-Pure DividendsUITests/Pods-Pure DividendsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		116FAB4BF6E7473C014D3694 /* Pods-Pure DividendsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure DividendsTests.release.xcconfig"; path = "Target Support Files/Pods-Pure DividendsTests/Pods-Pure DividendsTests.release.xcconfig"; sourceTree = "<group>"; };
+		1B6F4ACD491F60FDCB0D38D5 /* Pods-Pure Dividends-PDPersistence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends-PDPersistence.release.xcconfig"; path = "Target Support Files/Pods-Pure Dividends-PDPersistence/Pods-Pure Dividends-PDPersistence.release.xcconfig"; sourceTree = "<group>"; };
 		20E82D0489A34BB993F20FE7 /* Pods_Pure_Dividends_PDNetworking_PDNetworkingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_Dividends_PDNetworking_PDNetworkingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D325A2AA2A4BF58765827C /* Pods-Pure Dividends-PDNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends-PDNetworking.debug.xcconfig"; path = "Target Support Files/Pods-Pure Dividends-PDNetworking/Pods-Pure Dividends-PDNetworking.debug.xcconfig"; sourceTree = "<group>"; };
+		2B1CC0D833B33EA3122FD183 /* Pods-Pure Dividends-PDPersistence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends-PDPersistence.debug.xcconfig"; path = "Target Support Files/Pods-Pure Dividends-PDPersistence/Pods-Pure Dividends-PDPersistence.debug.xcconfig"; sourceTree = "<group>"; };
+		30281D8EDEF83F2D5DA01730 /* Pods_Pure_Dividends_PDPersistence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_Dividends_PDPersistence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		363A2A674F31488F4E8F8C81 /* Pods_Pure_Dividends_PDNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_Dividends_PDNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43A8DD2DFE0716AEB7596B29 /* Pods_Pure_DividendsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_DividendsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FA9DCBA9EEFFF8AEE1CCD63 /* Pods-Pure Dividends-PDNetworking-PDNetworkingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends-PDNetworking-PDNetworkingTests.release.xcconfig"; path = "Target Support Files/Pods-Pure Dividends-PDNetworking-PDNetworkingTests/Pods-Pure Dividends-PDNetworking-PDNetworkingTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,7 +148,16 @@
 		A3AF0AF377115B094567B429 /* Pods-Pure Dividends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends.release.xcconfig"; path = "Target Support Files/Pods-Pure Dividends/Pods-Pure Dividends.release.xcconfig"; sourceTree = "<group>"; };
 		A6FA8C794C2A9AAC882B8D6E /* Pods-Pure DividendsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure DividendsUITests.release.xcconfig"; path = "Target Support Files/Pods-Pure DividendsUITests/Pods-Pure DividendsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A88CE952846C09351624B3BC /* Pods-Pure Dividends-PDNetworking-PDNetworkingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends-PDNetworking-PDNetworkingTests.debug.xcconfig"; path = "Target Support Files/Pods-Pure Dividends-PDNetworking-PDNetworkingTests/Pods-Pure Dividends-PDNetworking-PDNetworkingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B4AA8B21833CCA1F13569B00 /* Pods_Pure_Dividends_PDPersistence_PDPersistenceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_Dividends_PDPersistence_PDPersistenceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C62E16E298C3603CCC0EED /* Pods_Pure_Dividends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_Dividends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F56F61D3E8542FAAB3417606 /* Pods-Pure Dividends-PDPersistence-PDPersistenceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends-PDPersistence-PDPersistenceTests.release.xcconfig"; path = "Target Support Files/Pods-Pure Dividends-PDPersistence-PDPersistenceTests/Pods-Pure Dividends-PDPersistence-PDPersistenceTests.release.xcconfig"; sourceTree = "<group>"; };
+		FA6522E222CE84C3001BEEFD /* PDPersistence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PDPersistence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA6522E422CE84C3001BEEFD /* PDPersistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDPersistence.h; sourceTree = "<group>"; };
+		FA6522E522CE84C3001BEEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA6522EA22CE84C3001BEEFD /* PDPersistenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDPersistenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA6522F122CE84C3001BEEFD /* KeyValueStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStoreTests.swift; sourceTree = "<group>"; };
+		FA6522F322CE84C3001BEEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA6522FF22CE85AF001BEEFD /* KeyValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStore.swift; sourceTree = "<group>"; };
 		FA6661C822C83FF200E65AC7 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		FA6661D022C8412900E65AC7 /* SessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerTests.swift; sourceTree = "<group>"; };
 		FA6661D422C84A6500E65AC7 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -159,9 +201,27 @@
 		FAFB495422A9B0AC006FE490 /* CompundInterstCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompundInterstCalculatorTests.swift; sourceTree = "<group>"; };
 		FAFB495622A9B31E006FE490 /* CompundInterstCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompundInterstCalculator.swift; sourceTree = "<group>"; };
 		FCD7A7C0BFD4521E10D25BC5 /* Pods-Pure DividendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure DividendsTests.debug.xcconfig"; path = "Target Support Files/Pods-Pure DividendsTests/Pods-Pure DividendsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF326735EDE47FED5109CDF4 /* Pods-Pure Dividends-PDPersistence-PDPersistenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends-PDPersistence-PDPersistenceTests.debug.xcconfig"; path = "Target Support Files/Pods-Pure Dividends-PDPersistence-PDPersistenceTests/Pods-Pure Dividends-PDPersistence-PDPersistenceTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FA6522DF22CE84C3001BEEFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14243827F49BF8723E194C1F /* Pods_Pure_Dividends_PDPersistence.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA6522E722CE84C3001BEEFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA6522EB22CE84C3001BEEFD /* PDPersistence.framework in Frameworks */,
+				3D79721D1B3162E223C87B43 /* Pods_Pure_Dividends_PDPersistence_PDPersistenceTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA6661F322C9607400E65AC7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,6 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6522F722CE84C3001BEEFD /* PDPersistence.framework in Frameworks */,
 				FA66620B22C9607400E65AC7 /* PDNetworking.framework in Frameworks */,
 				6305869D06691DEC8D0AFAE1 /* Pods_Pure_Dividends.framework in Frameworks */,
 			);
@@ -220,6 +281,10 @@
 				6D4A1BBC883C014C99304E73 /* Pods-Pure Dividends-PDNetworking.release.xcconfig */,
 				A88CE952846C09351624B3BC /* Pods-Pure Dividends-PDNetworking-PDNetworkingTests.debug.xcconfig */,
 				4FA9DCBA9EEFFF8AEE1CCD63 /* Pods-Pure Dividends-PDNetworking-PDNetworkingTests.release.xcconfig */,
+				2B1CC0D833B33EA3122FD183 /* Pods-Pure Dividends-PDPersistence.debug.xcconfig */,
+				1B6F4ACD491F60FDCB0D38D5 /* Pods-Pure Dividends-PDPersistence.release.xcconfig */,
+				FF326735EDE47FED5109CDF4 /* Pods-Pure Dividends-PDPersistence-PDPersistenceTests.debug.xcconfig */,
+				F56F61D3E8542FAAB3417606 /* Pods-Pure Dividends-PDPersistence-PDPersistenceTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -232,8 +297,29 @@
 				72186F2B2C5311AD6BB13230 /* Pods_Pure_DividendsUITests.framework */,
 				363A2A674F31488F4E8F8C81 /* Pods_Pure_Dividends_PDNetworking.framework */,
 				20E82D0489A34BB993F20FE7 /* Pods_Pure_Dividends_PDNetworking_PDNetworkingTests.framework */,
+				30281D8EDEF83F2D5DA01730 /* Pods_Pure_Dividends_PDPersistence.framework */,
+				B4AA8B21833CCA1F13569B00 /* Pods_Pure_Dividends_PDPersistence_PDPersistenceTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA6522E322CE84C3001BEEFD /* PDPersistence */ = {
+			isa = PBXGroup;
+			children = (
+				FA6522E422CE84C3001BEEFD /* PDPersistence.h */,
+				FA6522E522CE84C3001BEEFD /* Info.plist */,
+				FA6522FF22CE85AF001BEEFD /* KeyValueStore.swift */,
+			);
+			path = PDPersistence;
+			sourceTree = "<group>";
+		};
+		FA6522F022CE84C3001BEEFD /* PDPersistenceTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA6522F122CE84C3001BEEFD /* KeyValueStoreTests.swift */,
+				FA6522F322CE84C3001BEEFD /* Info.plist */,
+			);
+			path = PDPersistenceTests;
 			sourceTree = "<group>";
 		};
 		FA6661C722C83FE200E65AC7 /* Managers */ = {
@@ -348,6 +434,8 @@
 				FA97D94822A23D1C003529EC /* Pure DividendsUITests */,
 				FA6661F722C9607400E65AC7 /* PDNetworking */,
 				FA66620422C9607400E65AC7 /* PDNetworkingTests */,
+				FA6522E322CE84C3001BEEFD /* PDPersistence */,
+				FA6522F022CE84C3001BEEFD /* PDPersistenceTests */,
 				FA97D92722A23D1B003529EC /* Products */,
 				0D9BDEE4C23E4DD733DACC70 /* Pods */,
 				F4DA4B866466D4D8AD5DF262 /* Frameworks */,
@@ -362,6 +450,8 @@
 				FA97D94522A23D1C003529EC /* Pure DividendsUITests.xctest */,
 				FA6661F622C9607400E65AC7 /* PDNetworking.framework */,
 				FA6661FE22C9607400E65AC7 /* PDNetworkingTests.xctest */,
+				FA6522E222CE84C3001BEEFD /* PDPersistence.framework */,
+				FA6522EA22CE84C3001BEEFD /* PDPersistenceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -409,6 +499,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		FA6522DD22CE84C3001BEEFD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA6522F422CE84C3001BEEFD /* PDPersistence.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA6661F122C9607400E65AC7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -420,6 +518,46 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		FA6522E122CE84C3001BEEFD /* PDPersistence */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA6522FD22CE84C3001BEEFD /* Build configuration list for PBXNativeTarget "PDPersistence" */;
+			buildPhases = (
+				3CB6893A9C63A27EA2E7B240 /* [CP] Check Pods Manifest.lock */,
+				FA6522DD22CE84C3001BEEFD /* Headers */,
+				FA6522DE22CE84C3001BEEFD /* Sources */,
+				FA6522DF22CE84C3001BEEFD /* Frameworks */,
+				FA6522E022CE84C3001BEEFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PDPersistence;
+			productName = PDPersistence;
+			productReference = FA6522E222CE84C3001BEEFD /* PDPersistence.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FA6522E922CE84C3001BEEFD /* PDPersistenceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA6522FE22CE84C3001BEEFD /* Build configuration list for PBXNativeTarget "PDPersistenceTests" */;
+			buildPhases = (
+				2C732982404FC2F8DC4382EB /* [CP] Check Pods Manifest.lock */,
+				FA6522E622CE84C3001BEEFD /* Sources */,
+				FA6522E722CE84C3001BEEFD /* Frameworks */,
+				FA6522E822CE84C3001BEEFD /* Resources */,
+				E29086A73095D463A59C56C0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA6522ED22CE84C3001BEEFD /* PBXTargetDependency */,
+				FA6522EF22CE84C3001BEEFD /* PBXTargetDependency */,
+			);
+			name = PDPersistenceTests;
+			productName = PDPersistenceTests;
+			productReference = FA6522EA22CE84C3001BEEFD /* PDPersistenceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FA6661F522C9607400E65AC7 /* PDNetworking */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA66620D22C9607400E65AC7 /* Build configuration list for PBXNativeTarget "PDNetworking" */;
@@ -475,6 +613,7 @@
 			);
 			dependencies = (
 				FA66620A22C9607400E65AC7 /* PBXTargetDependency */,
+				FA6522F622CE84C3001BEEFD /* PBXTargetDependency */,
 			);
 			name = "Pure Dividends";
 			productName = "Pure Dividends";
@@ -530,6 +669,13 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "The iOS Interview Guide";
 				TargetAttributes = {
+					FA6522E122CE84C3001BEEFD = {
+						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
+					};
+					FA6522E922CE84C3001BEEFD = {
+						CreatedOnToolsVersion = 11.0;
+					};
 					FA6661F522C9607400E65AC7 = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -567,11 +713,27 @@
 				FA97D94422A23D1C003529EC /* Pure DividendsUITests */,
 				FA6661F522C9607400E65AC7 /* PDNetworking */,
 				FA6661FD22C9607400E65AC7 /* PDNetworkingTests */,
+				FA6522E122CE84C3001BEEFD /* PDPersistence */,
+				FA6522E922CE84C3001BEEFD /* PDPersistenceTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FA6522E022CE84C3001BEEFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA6522E822CE84C3001BEEFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA6661F422C9607400E65AC7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -613,6 +775,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2C732982404FC2F8DC4382EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pure Dividends-PDPersistence-PDPersistenceTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CB6893A9C63A27EA2E7B240 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pure Dividends-PDPersistence-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		58FFDC54114C12FD66AD6921 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -757,6 +963,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E29086A73095D463A59C56C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pure Dividends-PDPersistence-PDPersistenceTests/Pods-Pure Dividends-PDPersistence-PDPersistenceTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pure Dividends-PDPersistence-PDPersistenceTests/Pods-Pure Dividends-PDPersistence-PDPersistenceTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pure Dividends-PDPersistence-PDPersistenceTests/Pods-Pure Dividends-PDPersistence-PDPersistenceTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E42C2C5D4CFA2B3CD0B4315D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -777,6 +1000,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FA6522DE22CE84C3001BEEFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA65230022CE85AF001BEEFD /* KeyValueStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA6522E622CE84C3001BEEFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA6522F222CE84C3001BEEFD /* KeyValueStoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA6661F222C9607400E65AC7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -843,6 +1082,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FA6522ED22CE84C3001BEEFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA6522E122CE84C3001BEEFD /* PDPersistence */;
+			targetProxy = FA6522EC22CE84C3001BEEFD /* PBXContainerItemProxy */;
+		};
+		FA6522EF22CE84C3001BEEFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA97D92522A23D1B003529EC /* Pure Dividends */;
+			targetProxy = FA6522EE22CE84C3001BEEFD /* PBXContainerItemProxy */;
+		};
+		FA6522F622CE84C3001BEEFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA6522E122CE84C3001BEEFD /* PDPersistence */;
+			targetProxy = FA6522F522CE84C3001BEEFD /* PBXContainerItemProxy */;
+		};
 		FA66620122C9607400E65AC7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA6661F522C9607400E65AC7 /* PDNetworking */;
@@ -890,6 +1144,109 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FA6522F922CE84C3001BEEFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B1CC0D833B33EA3122FD183 /* Pods-Pure Dividends-PDPersistence.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = SAT7295W5H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = PDPersistence/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosinterviewguide.PDPersistence;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FA6522FA22CE84C3001BEEFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B6F4ACD491F60FDCB0D38D5 /* Pods-Pure Dividends-PDPersistence.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = SAT7295W5H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = PDPersistence/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosinterviewguide.PDPersistence;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FA6522FB22CE84C3001BEEFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF326735EDE47FED5109CDF4 /* Pods-Pure Dividends-PDPersistence-PDPersistenceTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SAT7295W5H;
+				INFOPLIST_FILE = PDPersistenceTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosinterviewguide.PDPersistenceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA6522FC22CE84C3001BEEFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F56F61D3E8542FAAB3417606 /* Pods-Pure Dividends-PDPersistence-PDPersistenceTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SAT7295W5H;
+				INFOPLIST_FILE = PDPersistenceTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosinterviewguide.PDPersistenceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		FA66620E22C9607400E65AC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 22D325A2AA2A4BF58765827C /* Pods-Pure Dividends-PDNetworking.debug.xcconfig */;
@@ -1241,6 +1598,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FA6522FD22CE84C3001BEEFD /* Build configuration list for PBXNativeTarget "PDPersistence" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA6522F922CE84C3001BEEFD /* Debug */,
+				FA6522FA22CE84C3001BEEFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA6522FE22CE84C3001BEEFD /* Build configuration list for PBXNativeTarget "PDPersistenceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA6522FB22CE84C3001BEEFD /* Debug */,
+				FA6522FC22CE84C3001BEEFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FA66620D22C9607400E65AC7 /* Build configuration list for PBXNativeTarget "PDNetworking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

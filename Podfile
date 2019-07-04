@@ -32,4 +32,9 @@ target 'Pure Dividends' do
     end
   end
 
+  target 'PDPersistence' do
+    target 'PDPersistenceTests' do
+    end
+  end
+
 end
