@@ -9,20 +9,20 @@
 import RIBs
 import RxSwift
 
-protocol PortfolioRouting: ViewableRouting {}
+protocol PortfolioListRouting: ViewableRouting {}
 
-protocol PortfolioPresentable: Presentable {
-    var listener: PortfolioPresentableListener? { get set }
+protocol PortfolioListPresentable: Presentable {
+    var listener: PortfolioListPresentableListener? { get set }
     
     func present(stocks: [StockModel])
 }
 
-protocol PortfolioListener: class {}
+protocol PortfolioListListener: class {}
 
-final class PortfolioInteractor: PresentableInteractor<PortfolioPresentable>, PortfolioInteractable, PortfolioPresentableListener {
+final class PortfolioListInteractor: PresentableInteractor<PortfolioListPresentable>, PortfolioListInteractable, PortfolioListPresentableListener {
 
-    weak var router: PortfolioRouting?
-    weak var listener: PortfolioListener?
+    weak var router: PortfolioListRouting?
+    weak var listener: PortfolioListListener?
     
     private let iexService: IEXServiceInterface
     
@@ -30,7 +30,7 @@ final class PortfolioInteractor: PresentableInteractor<PortfolioPresentable>, Po
     
     private let stocksStorage: StocksStorageInterface
 
-    init(presenter: PortfolioPresentable,
+    init(presenter: PortfolioListPresentable,
          iexService: IEXServiceInterface,
          stocksStorage: StocksStorageInterface) {
         self.iexService = iexService

@@ -23,10 +23,10 @@
 		FA6661C922C83FF200E65AC7 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661C822C83FF200E65AC7 /* SessionManager.swift */; };
 		FA6661D122C8412900E65AC7 /* SessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661D022C8412900E65AC7 /* SessionManagerTests.swift */; };
 		FA6661D522C84A6500E65AC7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661D422C84A6500E65AC7 /* Session.swift */; };
-		FA6661E122C8522F00E65AC7 /* PortfolioRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661DD22C8522F00E65AC7 /* PortfolioRouter.swift */; };
-		FA6661E222C8522F00E65AC7 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661DE22C8522F00E65AC7 /* PortfolioViewController.swift */; };
-		FA6661E322C8522F00E65AC7 /* PortfolioBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661DF22C8522F00E65AC7 /* PortfolioBuilder.swift */; };
-		FA6661E422C8522F00E65AC7 /* PortfolioInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661E022C8522F00E65AC7 /* PortfolioInteractor.swift */; };
+		FA6661E122C8522F00E65AC7 /* PortfolioListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661DD22C8522F00E65AC7 /* PortfolioListRouter.swift */; };
+		FA6661E222C8522F00E65AC7 /* PortfolioListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661DE22C8522F00E65AC7 /* PortfolioListViewController.swift */; };
+		FA6661E322C8522F00E65AC7 /* PortfolioListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661DF22C8522F00E65AC7 /* PortfolioListBuilder.swift */; };
+		FA6661E422C8522F00E65AC7 /* PortfolioListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661E022C8522F00E65AC7 /* PortfolioListInteractor.swift */; };
 		FA6661E622C854FC00E65AC7 /* ViewControllable+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661E522C854FC00E65AC7 /* ViewControllable+Navigation.swift */; };
 		FA6661E822C8608100E65AC7 /* UITableViewCell+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661E722C8608100E65AC7 /* UITableViewCell+extensions.swift */; };
 		FA6661EA22C8632B00E65AC7 /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6661E922C8632B00E65AC7 /* StockViewModel.swift */; };
@@ -162,10 +162,10 @@
 		FA6661C822C83FF200E65AC7 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		FA6661D022C8412900E65AC7 /* SessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerTests.swift; sourceTree = "<group>"; };
 		FA6661D422C84A6500E65AC7 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		FA6661DD22C8522F00E65AC7 /* PortfolioRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioRouter.swift; sourceTree = "<group>"; };
-		FA6661DE22C8522F00E65AC7 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
-		FA6661DF22C8522F00E65AC7 /* PortfolioBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioBuilder.swift; sourceTree = "<group>"; };
-		FA6661E022C8522F00E65AC7 /* PortfolioInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioInteractor.swift; sourceTree = "<group>"; };
+		FA6661DD22C8522F00E65AC7 /* PortfolioListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioListRouter.swift; sourceTree = "<group>"; };
+		FA6661DE22C8522F00E65AC7 /* PortfolioListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioListViewController.swift; sourceTree = "<group>"; };
+		FA6661DF22C8522F00E65AC7 /* PortfolioListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioListBuilder.swift; sourceTree = "<group>"; };
+		FA6661E022C8522F00E65AC7 /* PortfolioListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioListInteractor.swift; sourceTree = "<group>"; };
 		FA6661E522C854FC00E65AC7 /* ViewControllable+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewControllable+Navigation.swift"; sourceTree = "<group>"; };
 		FA6661E722C8608100E65AC7 /* UITableViewCell+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+extensions.swift"; sourceTree = "<group>"; };
 		FA6661E922C8632B00E65AC7 /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
@@ -378,15 +378,15 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		FA6661DC22C850D600E65AC7 /* Portfolio */ = {
+		FA6661DC22C850D600E65AC7 /* PortfolioList */ = {
 			isa = PBXGroup;
 			children = (
-				FA6661DD22C8522F00E65AC7 /* PortfolioRouter.swift */,
-				FA6661DE22C8522F00E65AC7 /* PortfolioViewController.swift */,
-				FA6661DF22C8522F00E65AC7 /* PortfolioBuilder.swift */,
-				FA6661E022C8522F00E65AC7 /* PortfolioInteractor.swift */,
+				FA6661DD22C8522F00E65AC7 /* PortfolioListRouter.swift */,
+				FA6661DE22C8522F00E65AC7 /* PortfolioListViewController.swift */,
+				FA6661DF22C8522F00E65AC7 /* PortfolioListBuilder.swift */,
+				FA6661E022C8522F00E65AC7 /* PortfolioListInteractor.swift */,
 			);
-			path = Portfolio;
+			path = PortfolioList;
 			sourceTree = "<group>";
 		};
 		FA6661F722C9607400E65AC7 /* PDNetworking */ = {
@@ -468,7 +468,7 @@
 				FA6661C722C83FE200E65AC7 /* Managers */,
 				FA8F1BE322BDE44F00B22AA8 /* AppStart */,
 				FA8F1BE622BDE4D800B22AA8 /* Root */,
-				FA6661DC22C850D600E65AC7 /* Portfolio */,
+				FA6661DC22C850D600E65AC7 /* PortfolioList */,
 				FA97D92B22A23D1B003529EC /* ViewController.swift */,
 				FA97D95722A243DF003529EC /* SimplePortfolioViewController.swift */,
 				FA97D92D22A23D1B003529EC /* Main.storyboard */,
@@ -1048,16 +1048,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA6661E822C8608100E65AC7 /* UITableViewCell+extensions.swift in Sources */,
-				FA6661E222C8522F00E65AC7 /* PortfolioViewController.swift in Sources */,
+				FA6661E222C8522F00E65AC7 /* PortfolioListViewController.swift in Sources */,
 				FA8F1BE522BDE4BB00B22AA8 /* AppComponent.swift in Sources */,
 				FA97D92C22A23D1B003529EC /* ViewController.swift in Sources */,
 				FAFB495722A9B31E006FE490 /* CompundInterstCalculator.swift in Sources */,
-				FA6661E322C8522F00E65AC7 /* PortfolioBuilder.swift in Sources */,
-				FA6661E122C8522F00E65AC7 /* PortfolioRouter.swift in Sources */,
+				FA6661E322C8522F00E65AC7 /* PortfolioListBuilder.swift in Sources */,
+				FA6661E122C8522F00E65AC7 /* PortfolioListRouter.swift in Sources */,
 				FA8F1BEC22BDE4EE00B22AA8 /* RootViewController.swift in Sources */,
 				FA97D95822A243DF003529EC /* SimplePortfolioViewController.swift in Sources */,
 				FA6661EA22C8632B00E65AC7 /* StockViewModel.swift in Sources */,
-				FA6661E422C8522F00E65AC7 /* PortfolioInteractor.swift in Sources */,
+				FA6661E422C8522F00E65AC7 /* PortfolioListInteractor.swift in Sources */,
 				FA6661E622C854FC00E65AC7 /* ViewControllable+Navigation.swift in Sources */,
 				FAC55ECF22E40470001AF0ED /* StocksStorage.swift in Sources */,
 				FA8F1BEB22BDE4EE00B22AA8 /* RootRouter.swift in Sources */,

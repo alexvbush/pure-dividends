@@ -11,17 +11,17 @@ import RxSwift
 import UIKit
 import SnapKit
 
-protocol PortfolioPresentableListener: class {
+protocol PortfolioListPresentableListener: class {
     // TODO: Declare properties and methods that the view controller can invoke to perform
     // business logic, such as signIn(). This protocol is implemented by the corresponding
     // interactor class.
 }
 
-final class PortfolioViewController: UIViewController, PortfolioPresentable, PortfolioViewControllable, PortfolioViewDelegate {
+final class PortfolioListViewController: UIViewController, PortfolioListPresentable, PortfolioListViewControllable, PortfolioListViewDelegate {
 
-    weak var listener: PortfolioPresentableListener?
+    weak var listener: PortfolioListPresentableListener?
     
-    private lazy var internalView = PortfolioView(delegate: self)
+    private lazy var internalView = PortfolioListView(delegate: self)
     
     private var stocksViewModels = [StockViewModel]()
     
@@ -53,17 +53,17 @@ final class PortfolioViewController: UIViewController, PortfolioPresentable, Por
     // MARK: END PortfolioViewDelegate -
 }
 
-fileprivate protocol PortfolioViewDelegate {
+fileprivate protocol PortfolioListViewDelegate {
     func numberOfStocks() -> Int
     func stock(atIndex index: Int) -> StockViewModel
 }
 
-fileprivate final class PortfolioView: UIView, UITableViewDelegate, UITableViewDataSource {
-    private let delegate: PortfolioViewDelegate
+fileprivate final class PortfolioListView: UIView, UITableViewDelegate, UITableViewDataSource {
+    private let delegate: PortfolioListViewDelegate
     
     private let tableView: UITableView
     
-    init(delegate: PortfolioViewDelegate) {
+    init(delegate: PortfolioListViewDelegate) {
         self.delegate = delegate
         self.tableView = UITableView()
         super.init(frame: .zero)

@@ -15,7 +15,7 @@ protocol RootDependency: Dependency {
     var sessionManager: SessionManagerInterface { get }
 }
 
-final class RootComponent: Component<RootDependency>, PortfolioDependency {
+final class RootComponent: Component<RootDependency>, PortfolioListDependency {
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
 
@@ -37,9 +37,9 @@ final class RootBuilder: Builder<RootDependency>, RootBuildable {
         let interactor = RootInteractor(presenter: viewController,
                                         sessionManager: component.dependency.sessionManager)
         
-        let portfolioBuilder = PortfolioBuilder(dependency: component)
+        let portfolioBuilder = PortfolioListBuilder(dependency: component)
         return RootRouter(interactor: interactor,
                           viewController: viewController,
-                          portfolioBuilder: portfolioBuilder)
+                          portfolioListBuilder: portfolioBuilder)
     }
 }

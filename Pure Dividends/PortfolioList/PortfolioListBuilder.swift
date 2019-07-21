@@ -11,12 +11,12 @@ import PDNetworking
 import Alamofire
 import PDPersistence
 
-protocol PortfolioDependency: Dependency {
+protocol PortfolioListDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
     // created by this RIB.
 }
 
-final class PortfolioComponent: Component<PortfolioDependency> {
+final class PortfolioListComponent: Component<PortfolioListDependency> {
 
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
     
@@ -47,23 +47,23 @@ final class PortfolioComponent: Component<PortfolioDependency> {
 
 // MARK: - Builder
 
-protocol PortfolioBuildable: Buildable {
-    func build(withListener listener: PortfolioListener) -> PortfolioRouting
+protocol PortfolioListBuildable: Buildable {
+    func build(withListener listener: PortfolioListListener) -> PortfolioListRouting
 }
 
-final class PortfolioBuilder: Builder<PortfolioDependency>, PortfolioBuildable {
+final class PortfolioListBuilder: Builder<PortfolioListDependency>, PortfolioListBuildable {
 
-    override init(dependency: PortfolioDependency) {
+    override init(dependency: PortfolioListDependency) {
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: PortfolioListener) -> PortfolioRouting {
-        let component = PortfolioComponent(dependency: dependency)
-        let viewController = PortfolioViewController()
-        let interactor = PortfolioInteractor(presenter: viewController,
-                                             iexService: component.iexService,
-                                             stocksStorage: component.stocksStorage)
+    func build(withListener listener: PortfolioListListener) -> PortfolioListRouting {
+        let component = PortfolioListComponent(dependency: dependency)
+        let viewController = PortfolioListViewController()
+        let interactor = PortfolioListInteractor(presenter: viewController,
+                                                 iexService: component.iexService,
+                                                 stocksStorage: component.stocksStorage)
         interactor.listener = listener
-        return PortfolioRouter(interactor: interactor, viewController: viewController)
+        return PortfolioListRouter(interactor: interactor, viewController: viewController)
     }
 }

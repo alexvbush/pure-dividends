@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol RootInteractable: Interactable, PortfolioListener {
+protocol RootInteractable: Interactable, PortfolioListListener {
     var router: RootRouting? { get set }
     var listener: RootListener? { get set }
 }
@@ -22,16 +22,16 @@ protocol RootViewControllable: ViewControllable {
 
 final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, RootRouting {
     
-    private let portfolioBuilder: PortfolioBuildable
+    private let portfolioListBuilder: PortfolioListBuildable
     
-    private var portfolioRouter: PortfolioRouting?
+    private var portfolioListRouter: PortfolioListRouting?
 
     // TODO: Constructor inject child builder protocols to allow building children.
     init(interactor: RootInteractable,
                   viewController: RootViewControllable,
-                  portfolioBuilder: PortfolioBuildable)
+                  portfolioListBuilder: PortfolioListBuildable)
     {
-        self.portfolioBuilder = portfolioBuilder
+        self.portfolioListBuilder = portfolioListBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -45,9 +45,9 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, Ro
     
     func routeToMainScreen() {
         
-        let portfolioRouter = portfolioBuilder.build(withListener: interactor)
-        self.portfolioRouter = portfolioRouter
-        attachChild(portfolioRouter)        
-        viewController.navigateTo(viewControllable: portfolioRouter.viewControllable)
+        let portfolioListRouter = portfolioListBuilder.build(withListener: interactor)
+        self.portfolioListRouter = portfolioListRouter
+        attachChild(portfolioListRouter)
+        viewController.navigateTo(viewControllable: portfolioListRouter.viewControllable)
     }
 }
