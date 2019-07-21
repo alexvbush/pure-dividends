@@ -42,6 +42,8 @@ final class PortfolioInteractor: PresentableInteractor<PortfolioPresentable>, Po
     override func didBecomeActive() {
         super.didBecomeActive()
         
+//        stocksStorage.saveStock(stock: StockModel(ticker: "T", name: "AT&T", currentPrice: 30.58))
+        
         stockModels = stocksStorage.retriveMainPortfolio()
         
         presenter.present(stocks: stockModels)

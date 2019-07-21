@@ -6,7 +6,7 @@
 //  Copyright © 2019 The iOS Interview Guide. All rights reserved.
 //
 
-public struct StockModel: Equatable {
+public struct StockModel: Equatable, Codable {
     public let ticker: String
     public let name: String
     public let currentPrice: Double
