@@ -9,6 +9,7 @@
 import RIBs
 import PDNetworking
 import Alamofire
+import PDPersistence
 
 protocol PortfolioDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
@@ -30,6 +31,18 @@ final class PortfolioComponent: Component<PortfolioDependency> {
     fileprivate var iexService: IEXServiceInterface {
         return IEXService(client: iexClient)
     }
+    
+    fileprivate var userDefaults: UserDefaults {
+        return UserDefaults.standard
+    }
+    
+    fileprivate var keyValueStore: KeyValueStoreInterface {
+        return KeyValueStore(userDefaults)
+    }
+    
+    fileprivate var stocksStorage: StocksStorageInterface {
+        return StocksStorage(keyValueStore: keyValueStore)
+    }
 }
 
 // MARK: - Builder
@@ -47,7 +60,9 @@ final class PortfolioBuilder: Builder<PortfolioDependency>, PortfolioBuildable {
     func build(withListener listener: PortfolioListener) -> PortfolioRouting {
         let component = PortfolioComponent(dependency: dependency)
         let viewController = PortfolioViewController()
-        let interactor = PortfolioInteractor(presenter: viewController, iexService: component.iexService)
+        let interactor = PortfolioInteractor(presenter: viewController,
+                                             iexService: component.iexService,
+                                             stocksStorage: component.stocksStorage)
         interactor.listener = listener
         return PortfolioRouter(interactor: interactor, viewController: viewController)
     }

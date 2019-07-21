@@ -6,7 +6,7 @@
 //  Copyright © 2019 The iOS Interview Guide. All rights reserved.
 //
 
-protocol KeyValueStoreInterface {
+public protocol KeyValueStoreInterface {
     func save<T: Codable>(key: String, value: T)
     func object<T: Codable>(forKey key: String) -> T?
     func remove<T: Codable>(forKey key: String) -> T?
@@ -15,15 +15,15 @@ protocol KeyValueStoreInterface {
 import Foundation
 
 /** A simple key value store. Typically backed by UserDefaults. */
-final class KeyValueStore: KeyValueStoreInterface {
+public final class KeyValueStore: KeyValueStoreInterface {
     
     private let userDefaults: UserDefaults
     
-    init(_ userDefaults: UserDefaults) {
+    public init(_ userDefaults: UserDefaults) {
         self.userDefaults = userDefaults
     }
     
-    func save<T: Codable>(key: String, value: T) {
+    public func save<T: Codable>(key: String, value: T) {
         let encoder = PropertyListEncoder()
         do {
             let encoded = try encoder.encode(value)
@@ -33,7 +33,7 @@ final class KeyValueStore: KeyValueStoreInterface {
         }
     }
     
-    func object<T: Codable>(forKey key: String) -> T? {
+    public func object<T: Codable>(forKey key: String) -> T? {
         let decoder = PropertyListDecoder()
         if let data = userDefaults.data(forKey: key) {
             return try? decoder.decode(T.self, from: data)
@@ -41,7 +41,7 @@ final class KeyValueStore: KeyValueStoreInterface {
         return nil
     }
     
-    func remove<T: Codable>(forKey key: String) -> T? {
+    public func remove<T: Codable>(forKey key: String) -> T? {
         let objectToRemove: T? = object(forKey: key)
         userDefaults.removeObject(forKey: key)
         return objectToRemove

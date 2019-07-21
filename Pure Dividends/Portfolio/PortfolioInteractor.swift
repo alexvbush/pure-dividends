@@ -26,14 +26,15 @@ final class PortfolioInteractor: PresentableInteractor<PortfolioPresentable>, Po
     
     private let iexService: IEXServiceInterface
     
-    private var stocksModels = [StockModel(ticker: "T", name: "AT&T", currentPrice: 30.58),
-                                StockModel(ticker: "MSFT", name: "Microsoft", currentPrice: 124.12),
-                                StockModel(ticker: "SQ", name: "Square", currentPrice: 60.5),
-                                StockModel(ticker: "SPY", name: "SPY", currentPrice: 230.78),
-                                StockModel(ticker: "TLT", name: "iShares 20+ Year Treasury Bond ETF", currentPrice: 131.83)]
+    private var stockModels = [StockModel]()
+    
+    private let stocksStorage: StocksStorageInterface
 
-    init(presenter: PortfolioPresentable, iexService: IEXServiceInterface) {
+    init(presenter: PortfolioPresentable,
+         iexService: IEXServiceInterface,
+         stocksStorage: StocksStorageInterface) {
         self.iexService = iexService
+        self.stocksStorage = stocksStorage
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -41,10 +42,12 @@ final class PortfolioInteractor: PresentableInteractor<PortfolioPresentable>, Po
     override func didBecomeActive() {
         super.didBecomeActive()
         
-        presenter.present(stocks: stocksModels)
+        stockModels = stocksStorage.retriveMainPortfolio()
         
-        iexService.fetchPrices(forStocks: stocksModels).subscribe(onNext: { (updateStockModels) in
-            self.stocksModels = updateStockModels
+        presenter.present(stocks: stockModels)
+        
+        iexService.fetchPrices(forStocks: stockModels).subscribe(onNext: { (updateStockModels) in
+            self.stockModels = updateStockModels
             self.presenter.present(stocks: updateStockModels)
         }, onError: { (error) in
             print("error: \(error)")
