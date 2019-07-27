@@ -9,14 +9,24 @@
 import RIBs
 
 protocol RootDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
-    
     var sessionManager: SessionManagerInterface { get }
+    var iexService: IEXServiceInterface { get }
+    var stocksStorage: StocksStorageInterface { get }
 }
 
-final class RootComponent: Component<RootDependency>, PortfolioListDependency, PortfolioDependency {
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+final class RootComponent: Component<RootDependency>, PortfolioDependency {
+    
+    fileprivate var sessionManager: SessionManagerInterface {
+        return dependency.sessionManager
+    }
+    
+    var iexService: IEXServiceInterface {
+        return dependency.iexService
+    }
+    
+    var stocksStorage: StocksStorageInterface {
+        return dependency.stocksStorage
+    }
 }
 
 // MARK: - Builder
@@ -35,7 +45,7 @@ final class RootBuilder: Builder<RootDependency>, RootBuildable {
         let component = RootComponent(dependency: dependency)
         let viewController = RootViewController()
         let interactor = RootInteractor(presenter: viewController,
-                                        sessionManager: component.dependency.sessionManager)
+                                        sessionManager: component.sessionManager)
                 
         let portfolioBuilder = PortfolioBuilder(dependency: component)
         return RootRouter(interactor: interactor,

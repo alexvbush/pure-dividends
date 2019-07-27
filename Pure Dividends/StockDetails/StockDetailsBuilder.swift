@@ -9,19 +9,20 @@
 import RIBs
 
 protocol StockDetailsDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
+    var iexService: IEXServiceInterface { get }
 }
 
 final class StockDetailsComponent: Component<StockDetailsDependency> {
 
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    fileprivate var iexService: IEXServiceInterface {
+        return dependency.iexService
+    }
 }
 
 // MARK: - Builder
 
 protocol StockDetailsBuildable: Buildable {
-    func build(withListener listener: StockDetailsListener) -> StockDetailsRouting
+    func build(withListener listener: StockDetailsListener, stock: StockModel) -> StockDetailsRouting
 }
 
 final class StockDetailsBuilder: Builder<StockDetailsDependency>, StockDetailsBuildable {
@@ -30,10 +31,12 @@ final class StockDetailsBuilder: Builder<StockDetailsDependency>, StockDetailsBu
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: StockDetailsListener) -> StockDetailsRouting {
+    func build(withListener listener: StockDetailsListener, stock: StockModel) -> StockDetailsRouting {
         let component = StockDetailsComponent(dependency: dependency)
         let viewController = StockDetailsViewController()
-        let interactor = StockDetailsInteractor(presenter: viewController)
+        let interactor = StockDetailsInteractor(presenter: viewController,
+                                                iexService: component.iexService,
+                                                stock: stock)
         interactor.listener = listener
         return StockDetailsRouter(interactor: interactor, viewController: viewController)
     }

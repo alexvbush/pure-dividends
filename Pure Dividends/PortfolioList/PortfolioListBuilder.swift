@@ -12,36 +12,18 @@ import Alamofire
 import PDPersistence
 
 protocol PortfolioListDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
+    var iexService: IEXServiceInterface { get }
+    var stocksStorage: StocksStorageInterface { get }
 }
 
 final class PortfolioListComponent: Component<PortfolioListDependency>, StockDetailsDependency {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
     
-    fileprivate var sessionManager: Alamofire.SessionManager {
-        return Alamofire.SessionManager.default
-    }
-    
-    fileprivate var iexClient: IEXClientInterface {
-        return IEXClient(manager: sessionManager)
-    }
-    
-    fileprivate var iexService: IEXServiceInterface {
-        return IEXService(client: iexClient)
-    }
-    
-    fileprivate var userDefaults: UserDefaults {
-        return UserDefaults.standard
-    }
-    
-    fileprivate var keyValueStore: KeyValueStoreInterface {
-        return KeyValueStore(userDefaults)
+    var iexService: IEXServiceInterface {
+        return dependency.iexService
     }
     
     fileprivate var stocksStorage: StocksStorageInterface {
-        return StocksStorage(keyValueStore: keyValueStore)
+        return dependency.stocksStorage
     }
 }
 

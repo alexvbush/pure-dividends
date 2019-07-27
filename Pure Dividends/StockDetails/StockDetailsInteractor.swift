@@ -22,26 +22,38 @@ protocol StockDetailsListener: class {
     func didComplete(_ interactor: StockDetailsInteractable)
 }
 
+struct StockQuoteModel {
+    
+}
+
 final class StockDetailsInteractor: PresentableInteractor<StockDetailsPresentable>, StockDetailsInteractable, StockDetailsPresentableListener {
 
     weak var router: StockDetailsRouting?
     weak var listener: StockDetailsListener?
-
-    // TODO: Add additional dependencies to constructor. Do not perform any logic
-    // in constructor.
-    override init(presenter: StockDetailsPresentable) {
+    
+    private let iexService: IEXServiceInterface
+    
+    private let stock: StockModel
+    private var stockQuote: StockQuoteModel?
+    
+    init(presenter: StockDetailsPresentable,
+         iexService: IEXServiceInterface,
+         stock: StockModel) {
+        self.iexService = iexService
+        self.stock = stock
         super.init(presenter: presenter)
         presenter.listener = self
     }
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        // TODO: Implement business logic here.
-    }
-
-    override func willResignActive() {
-        super.willResignActive()
-        // TODO: Pause any business logic.
+        
+        iexService.fetchStockQuote(stock).subscribe(onNext: { (stockQuote) in
+            self.stockQuote = stockQuote
+//            self.presenter.present(stocks: updateStockModels)
+        }, onError: { (error) in
+//            print("error: \(error)")
+        }).disposeOnDeactivate(interactor: self)
     }
     
     func goBack() {

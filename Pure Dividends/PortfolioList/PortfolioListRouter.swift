@@ -30,8 +30,9 @@ final class PortfolioListRouter: ViewableRouter<PortfolioListInteractable, Portf
         interactor.router = self
     }
     
-    func routeToStockDetals(_ stock: StockModel) {        
-        let stockDetailsRouter = stockDetailsBuilder.build(withListener: interactor)
+    func routeToStockDetals(_ stock: StockModel) {
+        let stockDetailsRouter = stockDetailsBuilder.build(withListener: interactor,
+                                                           stock: stock)
         self.stockDetailsRouter = stockDetailsRouter
         attachChild(stockDetailsRouter)
         viewController.push(viewControllable: stockDetailsRouter.viewControllable, animated: true)

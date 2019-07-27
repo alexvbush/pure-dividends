@@ -8,6 +8,9 @@
 
 import Foundation
 import RIBs
+import PDPersistence
+import PDNetworking
+import Alamofire
 
 class AppComponent: Component<EmptyDependency>, RootDependency {
     
@@ -19,5 +22,29 @@ class AppComponent: Component<EmptyDependency>, RootDependency {
         let sessionManager = SessionManager()
         sessionManager.save(session: Session(token: "jslfdhk"))
         return sessionManager
+    }
+        
+    var iexService: IEXServiceInterface {
+        return IEXService(client: iexClient)
+    }
+    
+    var stocksStorage: StocksStorageInterface {
+        return StocksStorage(keyValueStore: keyValueStore)
+    }
+    
+    fileprivate var networkSessionManager: Alamofire.SessionManager {
+        return Alamofire.SessionManager.default
+    }
+    
+    fileprivate var iexClient: IEXClientInterface {
+        return IEXClient(manager: networkSessionManager)
+    }
+    
+    fileprivate var userDefaults: UserDefaults {
+        return UserDefaults.standard
+    }
+    
+    fileprivate var keyValueStore: KeyValueStoreInterface {
+        return KeyValueStore(userDefaults)
     }
 }

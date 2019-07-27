@@ -9,13 +9,19 @@
 import RIBs
 
 protocol PortfolioDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
+    var iexService: IEXServiceInterface { get }
+    var stocksStorage: StocksStorageInterface { get }
 }
 
 final class PortfolioComponent: Component<PortfolioDependency>, PortfolioListDependency {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    
+    var iexService: IEXServiceInterface {
+        return dependency.iexService
+    }
+    
+    var stocksStorage: StocksStorageInterface {
+        return dependency.stocksStorage
+    }
 }
 
 // MARK: - Builder
