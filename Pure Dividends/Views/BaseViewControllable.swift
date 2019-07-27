@@ -1,14 +1,19 @@
 //
-//  ViewControllable+Navigation.swift
+//  BaseViewControllable.swift
 //  Pure Dividends
 //
-//  Created by Alex Bush on 6/29/19.
+//  Created by Alex Bush on 7/27/19.
 //  Copyright © 2019 The iOS Interview Guide. All rights reserved.
 //
 
 import RIBs
 
-extension ViewControllable where Self: UIViewController {
+protocol BaseViewControllable: ViewControllable {
+    func present(viewController: ViewControllable)
+    func navigateTo(viewControllable: ViewControllable)
+}
+
+extension BaseViewControllable where Self: UIViewController {
     
     func navigateTo(viewControllable: ViewControllable) {
         let rootViewController = self.uiviewController

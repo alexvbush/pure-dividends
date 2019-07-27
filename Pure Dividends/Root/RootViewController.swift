@@ -36,7 +36,7 @@ final class RootViewController: UIViewController, RootPresentable, RootViewContr
     
     // MARK: - BEGIN RootPresentable
     func showLoggedIn() {
-        view.backgroundColor = .blue
+//        view.backgroundColor = .blue
     }
     
     func showLoggedOut() {
