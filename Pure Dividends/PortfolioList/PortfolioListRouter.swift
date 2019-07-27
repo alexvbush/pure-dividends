@@ -8,20 +8,40 @@
 
 import RIBs
 
-protocol PortfolioListInteractable: Interactable {
+protocol PortfolioListInteractable: Interactable, StockDetailsListener {
     var router: PortfolioListRouting? { get set }
     var listener: PortfolioListListener? { get set }
 }
 
-protocol PortfolioListViewControllable: ViewControllable {
+protocol PortfolioListViewControllable: BaseViewControllable {
     // TODO: Declare methods the router invokes to manipulate the view hierarchy.
 }
 
 final class PortfolioListRouter: ViewableRouter<PortfolioListInteractable, PortfolioListViewControllable>, PortfolioListRouting {
-
-    // TODO: Constructor inject child builder protocols to allow building children.
-    override init(interactor: PortfolioListInteractable, viewController: PortfolioListViewControllable) {
+    
+    private let stockDetailsBuilder: StockDetailsBuildable
+    private var stockDetailsRouter: StockDetailsRouting?
+    
+    init(interactor: PortfolioListInteractable,
+         viewController: PortfolioListViewControllable,
+         stockDetailsBuilder: StockDetailsBuildable) {
+        self.stockDetailsBuilder = stockDetailsBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
+    }
+    
+    func routeToStockDetals(_ stock: StockModel) {        
+        let stockDetailsRouter = stockDetailsBuilder.build(withListener: interactor)
+        self.stockDetailsRouter = stockDetailsRouter
+        attachChild(stockDetailsRouter)
+        viewController.push(viewControllable: stockDetailsRouter.viewControllable, animated: true)
+    }
+    
+    func routeAwayFromStockDetals() {
+        if let stockDetailsRouter = stockDetailsRouter {
+            self.stockDetailsRouter = nil
+            detachChild(stockDetailsRouter)
+            viewController.popLastViewControllable(animated: true)
+        }
     }
 }

@@ -11,6 +11,8 @@ import RIBs
 protocol BaseViewControllable: ViewControllable {
     func present(viewController: ViewControllable)
     func navigateTo(viewControllable: ViewControllable)
+    func push(viewControllable: ViewControllable, animated: Bool)
+    func popLastViewControllable(animated: Bool)
 }
 
 extension BaseViewControllable where Self: UIViewController {
@@ -34,5 +36,13 @@ extension BaseViewControllable where Self: UIViewController {
     
     func present(viewController: ViewControllable) {
         present(viewController.uiviewController, animated: true, completion: nil)
+    }
+    
+    func push(viewControllable: ViewControllable, animated: Bool = true) {
+        navigationController?.pushViewController(viewControllable.uiviewController, animated: animated)
+    }
+    
+    func popLastViewControllable(animated: Bool = true) {
+        navigationController?.popViewController(animated: animated)
     }
 }

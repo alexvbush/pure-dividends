@@ -16,7 +16,7 @@ protocol PortfolioListDependency: Dependency {
     // created by this RIB.
 }
 
-final class PortfolioListComponent: Component<PortfolioListDependency> {
+final class PortfolioListComponent: Component<PortfolioListDependency>, StockDetailsDependency {
 
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
     
@@ -64,6 +64,11 @@ final class PortfolioListBuilder: Builder<PortfolioListDependency>, PortfolioLis
                                                  iexService: component.iexService,
                                                  stocksStorage: component.stocksStorage)
         interactor.listener = listener
-        return PortfolioListRouter(interactor: interactor, viewController: viewController)
+        
+        let stockDetailsBuilder = StockDetailsBuilder(dependency: component)
+        
+        return PortfolioListRouter(interactor: interactor,
+                                   viewController: viewController,
+                                   stockDetailsBuilder: stockDetailsBuilder)
     }
 }

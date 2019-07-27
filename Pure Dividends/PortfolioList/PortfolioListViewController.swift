@@ -12,9 +12,7 @@ import UIKit
 import SnapKit
 
 protocol PortfolioListPresentableListener: class {
-    // TODO: Declare properties and methods that the view controller can invoke to perform
-    // business logic, such as signIn(). This protocol is implemented by the corresponding
-    // interactor class.
+    func stockSelected(_ stock: StockModel)
 }
 
 final class PortfolioListViewController: UIViewController, PortfolioListPresentable, PortfolioListViewControllable, PortfolioListViewDelegate {
@@ -50,12 +48,18 @@ final class PortfolioListViewController: UIViewController, PortfolioListPresenta
     func stock(atIndex index: Int) -> StockViewModel {
         return stocksViewModels[index]
     }
+    
+    func didSelect(index: Int) {
+        let selectedViewModel = stocksViewModels[index]
+        listener?.stockSelected(selectedViewModel.stock)
+    }
     // MARK: END PortfolioViewDelegate -
 }
 
 fileprivate protocol PortfolioListViewDelegate {
     func numberOfStocks() -> Int
     func stock(atIndex index: Int) -> StockViewModel
+    func didSelect(index: Int)
 }
 
 fileprivate final class PortfolioListView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -116,5 +120,11 @@ fileprivate final class PortfolioListView: UIView, UITableViewDelegate, UITableV
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        delegate.didSelect(index: indexPath.row)
     }
 }

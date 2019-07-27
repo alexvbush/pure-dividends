@@ -7,7 +7,7 @@
 //
 
 struct StockViewModel {
-    private let stock: StockModel
+    let stock: StockModel
     
     init(stock: StockModel) {
         self.stock = stock

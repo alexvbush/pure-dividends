@@ -9,7 +9,10 @@
 import RIBs
 import RxSwift
 
-protocol PortfolioListRouting: ViewableRouting {}
+protocol PortfolioListRouting: ViewableRouting {
+    func routeToStockDetals(_ stock: StockModel)
+    func routeAwayFromStockDetals()
+}
 
 protocol PortfolioListPresentable: Presentable {
     var listener: PortfolioListPresentableListener? { get set }
@@ -51,9 +54,20 @@ final class PortfolioListInteractor: PresentableInteractor<PortfolioListPresenta
         iexService.fetchPrices(forStocks: stockModels).subscribe(onNext: { (updateStockModels) in
             self.stockModels = updateStockModels
             self.presenter.present(stocks: updateStockModels)
+            
+            self.stockSelected(self.stockModels.first!)
         }, onError: { (error) in
             print("error: \(error)")
         }).disposeOnDeactivate(interactor: self)
+    }
+    
+    func stockSelected(_ stock: StockModel) {
+        router?.routeToStockDetals(stock)
+    }
+}
 
+extension PortfolioListInteractor: StockDetailsListener {
+    func didComplete(_ interactor: StockDetailsInteractable) {
+        router?.routeAwayFromStockDetals()
     }
 }
