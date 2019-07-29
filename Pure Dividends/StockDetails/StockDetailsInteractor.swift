@@ -15,15 +15,13 @@ protocol StockDetailsRouting: ViewableRouting {
 
 protocol StockDetailsPresentable: Presentable {
     var listener: StockDetailsPresentableListener? { get set }
-    // TODO: Declare methods the interactor can invoke the presenter to present data.
+    
+    func present(stock: StockModel)
+    func present(stock: StockModel, withStockQuote stockQuote: StockQuoteModel)
 }
 
 protocol StockDetailsListener: class {
     func didComplete(_ interactor: StockDetailsInteractable)
-}
-
-struct StockQuoteModel {
-    
 }
 
 final class StockDetailsInteractor: PresentableInteractor<StockDetailsPresentable>, StockDetailsInteractable, StockDetailsPresentableListener {
@@ -48,11 +46,13 @@ final class StockDetailsInteractor: PresentableInteractor<StockDetailsPresentabl
     override func didBecomeActive() {
         super.didBecomeActive()
         
+        presenter.present(stock: stock)
+        
         iexService.fetchStockQuote(stock).subscribe(onNext: { (stockQuote) in
             self.stockQuote = stockQuote
-//            self.presenter.present(stocks: updateStockModels)
+            self.presenter.present(stock: self.stock, withStockQuote: stockQuote)
         }, onError: { (error) in
-//            print("error: \(error)")
+            print("error: \(error)")
         }).disposeOnDeactivate(interactor: self)
     }
     

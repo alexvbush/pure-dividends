@@ -54,6 +54,7 @@
 		FA90DFA522ECC0B30062F38F /* StockDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90DFA122ECC0B30062F38F /* StockDetailsViewController.swift */; };
 		FA90DFA622ECC0B30062F38F /* StockDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90DFA222ECC0B30062F38F /* StockDetailsBuilder.swift */; };
 		FA90DFA722ECC0B30062F38F /* StockDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90DFA322ECC0B30062F38F /* StockDetailsInteractor.swift */; };
+		FA90DFA922ECFD630062F38F /* StockQuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90DFA822ECFD630062F38F /* StockQuoteModel.swift */; };
 		FA97D92A22A23D1B003529EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97D92922A23D1B003529EC /* AppDelegate.swift */; };
 		FA97D93122A23D1B003529EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA97D93022A23D1B003529EC /* Assets.xcassets */; };
 		FA97D93422A23D1B003529EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA97D93222A23D1B003529EC /* LaunchScreen.storyboard */; };
@@ -200,6 +201,7 @@
 		FA90DFA122ECC0B30062F38F /* StockDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsViewController.swift; sourceTree = "<group>"; };
 		FA90DFA222ECC0B30062F38F /* StockDetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsBuilder.swift; sourceTree = "<group>"; };
 		FA90DFA322ECC0B30062F38F /* StockDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsInteractor.swift; sourceTree = "<group>"; };
+		FA90DFA822ECFD630062F38F /* StockQuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockQuoteModel.swift; sourceTree = "<group>"; };
 		FA97D92622A23D1B003529EC /* Pure Dividends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pure Dividends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA97D92922A23D1B003529EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA97D93022A23D1B003529EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 			children = (
 				FA66621822C968D100E65AC7 /* StockModel.swift */,
 				FA6661D422C84A6500E65AC7 /* Session.swift */,
+				FA90DFA822ECFD630062F38F /* StockQuoteModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1095,6 +1098,7 @@
 				FA6661E422C8522F00E65AC7 /* PortfolioListInteractor.swift in Sources */,
 				FA22EDC522E51BD5002B8136 /* PortfolioBuilder.swift in Sources */,
 				FA22EDC422E51BD5002B8136 /* PortfolioViewController.swift in Sources */,
+				FA90DFA922ECFD630062F38F /* StockQuoteModel.swift in Sources */,
 				FAC55ECF22E40470001AF0ED /* StocksStorage.swift in Sources */,
 				FA8F1BEB22BDE4EE00B22AA8 /* RootRouter.swift in Sources */,
 				FA90DFA522ECC0B30062F38F /* StockDetailsViewController.swift in Sources */,

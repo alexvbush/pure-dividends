@@ -38,6 +38,14 @@ final class IEXService: IEXServiceInterface {
     }
     
     func fetchStockQuote(_ stock: StockModel) -> Observable<StockQuoteModel> {
-        return Observable.just(StockQuoteModel())
+        
+        return iexClient.getQuote(ticker: stock.ticker).map { (stockQuoteDictionary) -> StockQuoteModel in
+            let stockQuoteModel = StockQuoteModel(ticker: stock.ticker,
+                                                  open: stockQuoteDictionary["open"] as! Double,
+                                                  close: stockQuoteDictionary["close"] as! Double,
+                                                  high: stockQuoteDictionary["high"] as! Double,
+                                                  low: stockQuoteDictionary["low"] as! Double)
+            return stockQuoteModel
+        }                
     }
 }

@@ -10,8 +10,11 @@ import RxSwift
 import RxAlamofire
 import Alamofire
 
+public typealias Ticker = String
+
 public protocol IEXClientInterface {
-    func getPrice(ticker: String) -> Observable<Double>
+    func getPrice(ticker: Ticker) -> Observable<Double>
+    func getQuote(ticker: Ticker) -> Observable<Dictionary<String, Any>>
 }
 
 public final class IEXClient: IEXClientInterface {
@@ -24,10 +27,17 @@ public final class IEXClient: IEXClientInterface {
         self.manager = manager
     }
     
-    public func getPrice(ticker: String) -> Observable<Double> {
+    public func getPrice(ticker: Ticker) -> Observable<Double> {
         let url = URL(string: "https://sandbox.iexapis.com/v1/stock/\(ticker)/price?token=\(token)")!
         return manager.rx.json(.get, url).map { (response) -> Double in
             return response as! Double
+        }
+    }
+    
+    public func getQuote(ticker: Ticker) -> Observable<Dictionary<String, Any>> {
+        let url = URL(string: "https://sandbox.iexapis.com/v1/stock/\(ticker)/quote?token=\(token)")!
+        return manager.rx.json(.get, url).map { (response) -> Dictionary<String, Any> in
+            return response as! Dictionary<String, Any>
         }
     }
 }

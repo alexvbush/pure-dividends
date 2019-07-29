@@ -75,8 +75,6 @@ fileprivate final class PortfolioListView: UIView, UITableViewDelegate, UITableV
         backgroundColor = .purple
         
         setupTableView()
-        
-//        tableView.reloadData()
     }
     
     required init?(coder aDecoder: NSCoder) {
