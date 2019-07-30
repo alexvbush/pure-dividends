@@ -35,6 +35,21 @@ final class PortfolioListViewController: UIViewController, PortfolioListPresenta
         view = internalView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupAddStockButtonButton()
+    }
+    
+    private func setupAddStockButtonButton() {
+        let addStockButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTap(_:)))        
+        navigationItem.rightBarButtonItem = addStockButton
+    }
+    
+    @objc private func addButtonTap(_ addButton: UIBarButtonItem) {
+        
+    }
+    
     func present(stocks: [StockModel]) {
         stocksViewModels = stocks.map { StockViewModel(stock: $0) }
         internalView.reload()

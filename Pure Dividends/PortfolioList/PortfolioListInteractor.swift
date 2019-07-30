@@ -55,7 +55,7 @@ final class PortfolioListInteractor: PresentableInteractor<PortfolioListPresenta
             self.stockModels = updateStockModels
             self.presenter.present(stocks: updateStockModels)
             
-            self.stockSelected(self.stockModels.first!)
+//            self.stockSelected(self.stockModels.first!)
         }, onError: { (error) in
             print("error: \(error)")
         }).disposeOnDeactivate(interactor: self)

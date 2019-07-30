@@ -18,6 +18,5 @@ protocol PortfolioPresentableListener: class {
 
 final class PortfolioViewController: UINavigationController, PortfolioPresentable, PortfolioViewControllable {
 
-    weak var listener: PortfolioPresentableListener?
-    
+    weak var listener: PortfolioPresentableListener?        
 }
