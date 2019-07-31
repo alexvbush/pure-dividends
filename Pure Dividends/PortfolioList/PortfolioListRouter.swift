@@ -25,8 +25,8 @@ final class PortfolioListRouter: ViewableRouter<PortfolioListInteractable, Portf
     init(interactor: PortfolioListInteractable,
          viewController: PortfolioListViewControllable,
          stockDetailsBuilder: StockDetailsBuildable) {
-        self.stockDetailsBuilder = stockDetailsBuilder
-        super.init(interactor: interactor, viewController: viewController)
+        self.stockDetailsBuilder = stockDetailsBuilder        
+        super.init(interactor: interactor, viewController: viewController)        
         interactor.router = self
     }
     

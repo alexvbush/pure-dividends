@@ -49,7 +49,7 @@ final class PortfolioListBuilder: Builder<PortfolioListDependency>, PortfolioLis
         
         let stockDetailsBuilder = StockDetailsBuilder(dependency: component)
         
-        return PortfolioListRouter(interactor: interactor,
+        return PortfolioListRouter(interactor: interactor,                                   
                                    viewController: viewController,
                                    stockDetailsBuilder: stockDetailsBuilder)
     }

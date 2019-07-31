@@ -14,7 +14,7 @@ protocol RootDependency: Dependency {
     var stocksStorage: StocksStorageInterface { get }
 }
 
-final class RootComponent: Component<RootDependency>, PortfolioDependency {
+final class RootComponent: Component<RootDependency>, PortfolioListDependency {
     
     fileprivate var sessionManager: SessionManagerInterface {
         return dependency.sessionManager
@@ -47,9 +47,9 @@ final class RootBuilder: Builder<RootDependency>, RootBuildable {
         let interactor = RootInteractor(presenter: viewController,
                                         sessionManager: component.sessionManager)
                 
-        let portfolioBuilder = PortfolioBuilder(dependency: component)
+        let portfolioListBuilder = PortfolioListBuilder(dependency: component)
         return RootRouter(interactor: interactor,
                           viewController: viewController,
-                          portfolioBuilder: portfolioBuilder)
+                          portfolioListBuilder: portfolioListBuilder)
     }
 }

@@ -11,6 +11,10 @@ import RxSwift
 import UIKit
 import SnapKit
 
+protocol PortfolioNavigationViewControllable: NavigationViewControllable {}
+
+final class PortfolioNavigationViewController: UINavigationController, PortfolioNavigationViewControllable {}
+
 protocol PortfolioListPresentableListener: class {
     func stockSelected(_ stock: StockModel)
 }
