@@ -41,10 +41,10 @@ final class IEXService: IEXServiceInterface {
         
         return iexClient.getQuote(ticker: stock.ticker).map { (stockQuoteDictionary) -> StockQuoteModel in
             let stockQuoteModel = StockQuoteModel(ticker: stock.ticker,
-                                                  open: stockQuoteDictionary["open"] as! Double,
-                                                  close: stockQuoteDictionary["close"] as! Double,
-                                                  high: stockQuoteDictionary["high"] as! Double,
-                                                  low: stockQuoteDictionary["low"] as! Double)
+                                                  open: stockQuoteDictionary["open"] as? Double ?? 0.0,
+                                                  close: stockQuoteDictionary["close"] as? Double ?? 0.0,
+                                                  high: stockQuoteDictionary["high"] as? Double ?? 0.0,
+                                                  low: stockQuoteDictionary["low"] as? Double ?? 0.0)
             return stockQuoteModel
         }                
     }

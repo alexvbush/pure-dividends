@@ -10,10 +10,15 @@ import RIBs
 
 protocol NavigationViewControllable: ViewControllable {
     func pushViewControllable(_ newViewControllable: ViewControllable, animated: Bool)
+    func popLastViewControllable(animated: Bool)
 }
 
 extension NavigationViewControllable where Self: UINavigationController {
     func pushViewControllable(_ newViewControllable: ViewControllable, animated: Bool) {
         pushViewController(newViewControllable.uiviewController, animated: animated)
+    }
+    
+    func popLastViewControllable(animated: Bool) {
+        popViewController(animated: animated)
     }
 }

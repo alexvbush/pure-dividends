@@ -13,7 +13,7 @@ protocol PortfolioListInteractable: Interactable, StockDetailsListener {
     var listener: PortfolioListListener? { get set }
 }
 
-protocol PortfolioListViewControllable: BaseViewControllable {
+protocol PortfolioListViewControllable: NavigationViewControllable {
     // TODO: Declare methods the router invokes to manipulate the view hierarchy.
 }
 
@@ -35,7 +35,7 @@ final class PortfolioListRouter: ViewableRouter<PortfolioListInteractable, Portf
                                                            stock: stock)
         self.stockDetailsRouter = stockDetailsRouter
         attachChild(stockDetailsRouter)
-        viewController.push(viewControllable: stockDetailsRouter.viewControllable, animated: true)
+        viewController.pushViewControllable(stockDetailsRouter.viewControllable, animated: true)
     }
     
     func routeAwayFromStockDetals() {

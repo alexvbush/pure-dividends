@@ -11,15 +11,14 @@ import RxSwift
 import UIKit
 import SnapKit
 
-protocol PortfolioNavigationViewControllable: NavigationViewControllable {}
 
-final class PortfolioNavigationViewController: UINavigationController, PortfolioNavigationViewControllable {}
+final class PortfolioNavigationViewController: UINavigationController, PortfolioListViewControllable {}
 
 protocol PortfolioListPresentableListener: class {
     func stockSelected(_ stock: StockModel)
 }
 
-final class PortfolioListViewController: UIViewController, PortfolioListPresentable, PortfolioListViewControllable, PortfolioListViewDelegate {
+final class PortfolioListViewController: UIViewController, PortfolioListPresentable, PortfolioListViewDelegate {
 
     weak var listener: PortfolioListPresentableListener?
     

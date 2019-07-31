@@ -41,8 +41,9 @@ final class PortfolioListBuilder: Builder<PortfolioListDependency>, PortfolioLis
 
     func build(withListener listener: PortfolioListListener) -> PortfolioListRouting {
         let component = PortfolioListComponent(dependency: dependency)
-        let viewController = PortfolioListViewController()
-        let interactor = PortfolioListInteractor(presenter: viewController,
+        let listViewController = PortfolioListViewController()
+        let navigationViewController = PortfolioNavigationViewController(rootViewController: listViewController)
+        let interactor = PortfolioListInteractor(presenter: listViewController,
                                                  iexService: component.iexService,
                                                  stocksStorage: component.stocksStorage)
         interactor.listener = listener
@@ -50,7 +51,7 @@ final class PortfolioListBuilder: Builder<PortfolioListDependency>, PortfolioLis
         let stockDetailsBuilder = StockDetailsBuilder(dependency: component)
         
         return PortfolioListRouter(interactor: interactor,                                   
-                                   viewController: viewController,
+                                   viewController: navigationViewController,
                                    stockDetailsBuilder: stockDetailsBuilder)
     }
 }
