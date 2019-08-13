@@ -16,7 +16,7 @@ protocol PortfolioListDependency: Dependency {
     var stocksStorage: StocksStorageInterface { get }
 }
 
-final class PortfolioListComponent: Component<PortfolioListDependency>, StockDetailsDependency {
+final class PortfolioListComponent: Component<PortfolioListDependency>, StockDetailsDependency, AddStockDependency {
     
     var iexService: IEXServiceInterface {
         return dependency.iexService
@@ -49,9 +49,11 @@ final class PortfolioListBuilder: Builder<PortfolioListDependency>, PortfolioLis
         interactor.listener = listener
         
         let stockDetailsBuilder = StockDetailsBuilder(dependency: component)
+        let addStockBuilder = AddStockBuilder(dependency: component)
         
         return PortfolioListRouter(interactor: interactor,                                   
                                    viewController: navigationViewController,
-                                   stockDetailsBuilder: stockDetailsBuilder)
+                                   stockDetailsBuilder: stockDetailsBuilder,
+                                   addStockBuilder: addStockBuilder)
     }
 }

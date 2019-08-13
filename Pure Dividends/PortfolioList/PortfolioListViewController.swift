@@ -16,6 +16,7 @@ final class PortfolioNavigationViewController: UINavigationController, Portfolio
 
 protocol PortfolioListPresentableListener: class {
     func stockSelected(_ stock: StockModel)
+    func addStockSelected()
 }
 
 final class PortfolioListViewController: UIViewController, PortfolioListPresentable, PortfolioListViewDelegate {
@@ -50,7 +51,7 @@ final class PortfolioListViewController: UIViewController, PortfolioListPresenta
     }
     
     @objc private func addButtonTap(_ addButton: UIBarButtonItem) {
-        
+        listener?.addStockSelected()
     }
     
     func present(stocks: [StockModel]) {

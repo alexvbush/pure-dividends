@@ -12,6 +12,8 @@ import RxSwift
 protocol PortfolioListRouting: ViewableRouting {
     func routeToStockDetals(_ stock: StockModel)
     func routeAwayFromStockDetals()
+    func routeToAddStock()
+    func routeAwayFromAddStock()
 }
 
 protocol PortfolioListPresentable: Presentable {
@@ -64,10 +66,20 @@ final class PortfolioListInteractor: PresentableInteractor<PortfolioListPresenta
     func stockSelected(_ stock: StockModel) {
         router?.routeToStockDetals(stock)
     }
+    
+    func addStockSelected() {
+        router?.routeToAddStock()
+    }
 }
 
 extension PortfolioListInteractor: StockDetailsListener {
     func didComplete(_ interactor: StockDetailsInteractable) {
         router?.routeAwayFromStockDetals()
+    }
+}
+
+extension PortfolioListInteractor: AddStockListener {
+    func didComplete(_ interactor: AddStockInteractable) {
+        router?.routeAwayFromAddStock()
     }
 }

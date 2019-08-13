@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol PortfolioListInteractable: Interactable, StockDetailsListener {
+protocol PortfolioListInteractable: Interactable, StockDetailsListener, AddStockListener {
     var router: PortfolioListRouting? { get set }
     var listener: PortfolioListListener? { get set }
 }
@@ -22,10 +22,15 @@ final class PortfolioListRouter: ViewableRouter<PortfolioListInteractable, Portf
     private let stockDetailsBuilder: StockDetailsBuildable
     private var stockDetailsRouter: StockDetailsRouting?
     
+    private let addStockBuilder: AddStockBuildable
+    private var addStockRouter: AddStockRouting?
+    
     init(interactor: PortfolioListInteractable,
          viewController: PortfolioListViewControllable,
-         stockDetailsBuilder: StockDetailsBuildable) {
-        self.stockDetailsBuilder = stockDetailsBuilder        
+         stockDetailsBuilder: StockDetailsBuildable,
+         addStockBuilder: AddStockBuildable) {
+        self.stockDetailsBuilder = stockDetailsBuilder
+        self.addStockBuilder = addStockBuilder
         super.init(interactor: interactor, viewController: viewController)        
         interactor.router = self
     }
@@ -43,6 +48,22 @@ final class PortfolioListRouter: ViewableRouter<PortfolioListInteractable, Portf
             self.stockDetailsRouter = nil
             detachChild(stockDetailsRouter)
             viewController.popLastViewControllable(animated: true)
+        }
+    }
+    
+    func routeToAddStock() {
+        let addStockRouter = addStockBuilder.build(withListener: interactor)
+        self.addStockRouter = addStockRouter
+        attachChild(addStockRouter)
+        let navVC = UINavigationController(rootViewController: addStockRouter.viewControllable.uiviewController)
+        viewController.uiviewController.present(navVC, animated: true, completion: nil)
+    }
+    
+    func routeAwayFromAddStock() {
+        if let addStockRouter = addStockRouter {
+            self.addStockRouter = nil
+            detachChild(addStockRouter)
+            addStockRouter.viewControllable.uiviewController.dismiss(animated: true, completion: nil)
         }
     }
 }

@@ -14,6 +14,10 @@
 		6305869D06691DEC8D0AFAE1 /* Pods_Pure_Dividends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C62E16E298C3603CCC0EED /* Pods_Pure_Dividends.framework */; };
 		633BA5B5299372C7D1BCEB09 /* Pods_Pure_Dividends_PDNetworking_PDNetworkingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E82D0489A34BB993F20FE7 /* Pods_Pure_Dividends_PDNetworking_PDNetworkingTests.framework */; };
 		D6BA4CCE967F0A4FEC9E39AB /* Pods_Pure_DividendsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72186F2B2C5311AD6BB13230 /* Pods_Pure_DividendsUITests.framework */; };
+		FA5845C323023A220078C2AD /* AddStockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5845BF23023A220078C2AD /* AddStockRouter.swift */; };
+		FA5845C423023A220078C2AD /* AddStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5845C023023A220078C2AD /* AddStockViewController.swift */; };
+		FA5845C523023A220078C2AD /* AddStockBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5845C123023A220078C2AD /* AddStockBuilder.swift */; };
+		FA5845C623023A220078C2AD /* AddStockInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5845C223023A220078C2AD /* AddStockInteractor.swift */; };
 		FA6522EB22CE84C3001BEEFD /* PDPersistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6522E222CE84C3001BEEFD /* PDPersistence.framework */; };
 		FA6522F222CE84C3001BEEFD /* KeyValueStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6522F122CE84C3001BEEFD /* KeyValueStoreTests.swift */; };
 		FA6522F422CE84C3001BEEFD /* PDPersistence.h in Headers */ = {isa = PBXBuildFile; fileRef = FA6522E422CE84C3001BEEFD /* PDPersistence.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -155,6 +159,10 @@
 		B4AA8B21833CCA1F13569B00 /* Pods_Pure_Dividends_PDPersistence_PDPersistenceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_Dividends_PDPersistence_PDPersistenceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C62E16E298C3603CCC0EED /* Pods_Pure_Dividends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_Dividends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56F61D3E8542FAAB3417606 /* Pods-Pure Dividends-PDPersistence-PDPersistenceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends-PDPersistence-PDPersistenceTests.release.xcconfig"; path = "Target Support Files/Pods-Pure Dividends-PDPersistence-PDPersistenceTests/Pods-Pure Dividends-PDPersistence-PDPersistenceTests.release.xcconfig"; sourceTree = "<group>"; };
+		FA5845BF23023A220078C2AD /* AddStockRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStockRouter.swift; sourceTree = "<group>"; };
+		FA5845C023023A220078C2AD /* AddStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStockViewController.swift; sourceTree = "<group>"; };
+		FA5845C123023A220078C2AD /* AddStockBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStockBuilder.swift; sourceTree = "<group>"; };
+		FA5845C223023A220078C2AD /* AddStockInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStockInteractor.swift; sourceTree = "<group>"; };
 		FA6522E222CE84C3001BEEFD /* PDPersistence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PDPersistence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6522E422CE84C3001BEEFD /* PDPersistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDPersistence.h; sourceTree = "<group>"; };
 		FA6522E522CE84C3001BEEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -309,6 +317,17 @@
 				B4AA8B21833CCA1F13569B00 /* Pods_Pure_Dividends_PDPersistence_PDPersistenceTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA5845BE23023A0F0078C2AD /* AddStock */ = {
+			isa = PBXGroup;
+			children = (
+				FA5845BF23023A220078C2AD /* AddStockRouter.swift */,
+				FA5845C023023A220078C2AD /* AddStockViewController.swift */,
+				FA5845C123023A220078C2AD /* AddStockBuilder.swift */,
+				FA5845C223023A220078C2AD /* AddStockInteractor.swift */,
+			);
+			path = AddStock;
 			sourceTree = "<group>";
 		};
 		FA6522E322CE84C3001BEEFD /* PDPersistence */ = {
@@ -480,6 +499,7 @@
 		FA97D92822A23D1B003529EC /* Pure Dividends */ = {
 			isa = PBXGroup;
 			children = (
+				FA5845BE23023A0F0078C2AD /* AddStock */,
 				FA90DF9F22ECC0960062F38F /* StockDetails */,
 				FAC55ECD22E4045B001AF0ED /* Storages */,
 				FA6661CC22C8401A00E65AC7 /* Models */,
@@ -1069,14 +1089,18 @@
 				FA6661E222C8522F00E65AC7 /* PortfolioListViewController.swift in Sources */,
 				FA8F1BE522BDE4BB00B22AA8 /* AppComponent.swift in Sources */,
 				FAFB495722A9B31E006FE490 /* CompundInterstCalculator.swift in Sources */,
+				FA5845C523023A220078C2AD /* AddStockBuilder.swift in Sources */,
+				FA5845C323023A220078C2AD /* AddStockRouter.swift in Sources */,
 				FA6661E322C8522F00E65AC7 /* PortfolioListBuilder.swift in Sources */,
 				FA6661E122C8522F00E65AC7 /* PortfolioListRouter.swift in Sources */,
 				FA8F1BEC22BDE4EE00B22AA8 /* RootViewController.swift in Sources */,
 				FA90DFA622ECC0B30062F38F /* StockDetailsBuilder.swift in Sources */,
 				FA6661EA22C8632B00E65AC7 /* StockViewModel.swift in Sources */,
+				FA5845C623023A220078C2AD /* AddStockInteractor.swift in Sources */,
 				FA6661E422C8522F00E65AC7 /* PortfolioListInteractor.swift in Sources */,
 				FA90DFA922ECFD630062F38F /* StockQuoteModel.swift in Sources */,
 				FAC55ECF22E40470001AF0ED /* StocksStorage.swift in Sources */,
+				FA5845C423023A220078C2AD /* AddStockViewController.swift in Sources */,
 				FA8F1BEB22BDE4EE00B22AA8 /* RootRouter.swift in Sources */,
 				FA90DFA522ECC0B30062F38F /* StockDetailsViewController.swift in Sources */,
 				FA6661C922C83FF200E65AC7 /* SessionManager.swift in Sources */,
@@ -1182,7 +1206,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PDPersistence/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1213,7 +1237,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PDPersistence/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1284,7 +1308,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PDNetworking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1313,7 +1337,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PDNetworking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1496,7 +1520,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SAT7295W5H;
 				INFOPLIST_FILE = "Pure Dividends/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1517,7 +1541,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SAT7295W5H;
 				INFOPLIST_FILE = "Pure Dividends/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
