@@ -13,6 +13,7 @@ protocol IEXServiceInterface {
     func fetchPrice(forStock stock: StockModel) -> Observable<StockModel>
     func fetchPrices(forStocks stocks: [StockModel]) -> Observable<[StockModel]>
     func fetchStockQuote(_ stock: StockModel) -> Observable<StockQuoteModel>
+    func search(ticker: String) -> Observable<[TickerSearchResultItem]>
 }
 
 final class IEXService: IEXServiceInterface {
@@ -47,5 +48,14 @@ final class IEXService: IEXServiceInterface {
                                                   low: stockQuoteDictionary["low"] as? Double ?? 0.0)
             return stockQuoteModel
         }                
+    }
+    
+    func search(ticker: String) -> Observable<[TickerSearchResultItem]> {
+        return iexClient.getSearch(ticker: ticker).map { (tickersSearchResultJSONArray) -> [TickerSearchResultItem] in
+            return tickersSearchResultJSONArray.compactMap { (tickerSearchResultJSON) -> TickerSearchResultItem in
+                return TickerSearchResultItem(symbol: tickerSearchResultJSON["symbol"] ?? "",
+                                              name: tickerSearchResultJSON["symbol"] ?? "")
+            }
+        }
     }
 }

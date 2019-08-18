@@ -12,6 +12,7 @@ target 'Pure Dividends' do
   pod 'RxSwift', '~> 4.0.0'
   pod 'Money-FlightSchool', '~> 1.1.1'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'RxCocoa', '~> 4.0.0'
 
   target 'Pure DividendsTests' do
     inherit! :search_paths

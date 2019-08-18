@@ -47,17 +47,17 @@ final class PortfolioListInteractor: PresentableInteractor<PortfolioListPresenta
     override func didBecomeActive() {
         super.didBecomeActive()
         
-//        stocksStorage.saveStock(stock: StockModel(ticker: "T", name: "AT&T", currentPrice: 30.58))
-        
         stockModels = stocksStorage.retriveMainPortfolio()
         
         presenter.present(stocks: stockModels)
         
+        fetchLatestPrices()
+    }
+    
+    private func fetchLatestPrices() {
         iexService.fetchPrices(forStocks: stockModels).subscribe(onNext: { (updateStockModels) in
             self.stockModels = updateStockModels
             self.presenter.present(stocks: updateStockModels)
-            
-//            self.stockSelected(self.stockModels.first!)
         }, onError: { (error) in
             print("error: \(error)")
         }).disposeOnDeactivate(interactor: self)
@@ -80,6 +80,16 @@ extension PortfolioListInteractor: StockDetailsListener {
 
 extension PortfolioListInteractor: AddStockListener {
     func didComplete(_ interactor: AddStockInteractable) {
+        router?.routeAwayFromAddStock()
+    }
+    
+    func didComplete(_ interactor: AddStockInteractable, withSelectedTickerToAdd selectedTicker: TickerSearchResultItem) {
+        let newStock = StockModel(ticker: selectedTicker.symbol, name: selectedTicker.name, currentPrice: 0.0)
+        stocksStorage.saveStock(stock: newStock)
+        
+        stockModels = stocksStorage.retriveMainPortfolio()        
+        fetchLatestPrices()
+        
         router?.routeAwayFromAddStock()
     }
 }

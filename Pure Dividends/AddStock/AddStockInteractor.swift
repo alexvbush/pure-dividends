@@ -15,21 +15,28 @@ protocol AddStockRouting: ViewableRouting {
 
 protocol AddStockPresentable: Presentable {
     var listener: AddStockPresentableListener? { get set }
-    // TODO: Declare methods the interactor can invoke the presenter to present data.
+    
+    func showFoundTickerMessage(_ matchedTickerSearchResultItem: TickerSearchResultItem)
+    func showCantFindTickerMessage(_ passedTicker: String)
 }
 
 protocol AddStockListener: class {
     func didComplete(_ interactor: AddStockInteractable)
+    func didComplete(_ interactor: AddStockInteractable, withSelectedTickerToAdd selectedTicker: TickerSearchResultItem)
 }
 
 final class AddStockInteractor: PresentableInteractor<AddStockPresentable>, AddStockInteractable, AddStockPresentableListener {
 
     weak var router: AddStockRouting?
     weak var listener: AddStockListener?
-
-    // TODO: Add additional dependencies to constructor. Do not perform any logic
-    // in constructor.
-    override init(presenter: AddStockPresentable) {
+    
+    private let iexService: IEXServiceInterface
+    
+    private var enteredTicker: TickerSearchResultItem?
+    
+    init(presenter: AddStockPresentable,
+         iexService: IEXServiceInterface) {
+        self.iexService = iexService
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -46,5 +53,29 @@ final class AddStockInteractor: PresentableInteractor<AddStockPresentable>, AddS
     
     func done() {
         listener?.didComplete(self)
+    }
+    
+    func addStock() {
+        if let selectedTicker = enteredTicker {
+            listener?.didComplete(self, withSelectedTickerToAdd: selectedTicker)
+        }
+    }
+    
+    func didEnterTicker(_ ticker: String) {
+        iexService.search(ticker: ticker).subscribe(onNext: { [weak self] (tickerSearchResultItems) in
+            
+            if let matchedTickerSearchResultItem = tickerSearchResultItems.first(where: { (tickerSearchResultItem) -> Bool in
+                return tickerSearchResultItem.symbol == ticker
+            }) {
+                self?.enteredTicker = matchedTickerSearchResultItem
+                self?.presenter.showFoundTickerMessage(matchedTickerSearchResultItem)
+            } else {
+                self?.enteredTicker = nil
+                self?.presenter.showCantFindTickerMessage(ticker)
+            }
+            
+        }, onError: { (error) in
+            print("error: \(error)")
+        }).disposeOnDeactivate(interactor: self)
     }
 }

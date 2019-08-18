@@ -14,6 +14,7 @@
 		6305869D06691DEC8D0AFAE1 /* Pods_Pure_Dividends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C62E16E298C3603CCC0EED /* Pods_Pure_Dividends.framework */; };
 		633BA5B5299372C7D1BCEB09 /* Pods_Pure_Dividends_PDNetworking_PDNetworkingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E82D0489A34BB993F20FE7 /* Pods_Pure_Dividends_PDNetworking_PDNetworkingTests.framework */; };
 		D6BA4CCE967F0A4FEC9E39AB /* Pods_Pure_DividendsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72186F2B2C5311AD6BB13230 /* Pods_Pure_DividendsUITests.framework */; };
+		FA0461042308B5EF00907E6F /* TickerSearchResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0461032308B5EF00907E6F /* TickerSearchResultItem.swift */; };
 		FA5845C323023A220078C2AD /* AddStockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5845BF23023A220078C2AD /* AddStockRouter.swift */; };
 		FA5845C423023A220078C2AD /* AddStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5845C023023A220078C2AD /* AddStockViewController.swift */; };
 		FA5845C523023A220078C2AD /* AddStockBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5845C123023A220078C2AD /* AddStockBuilder.swift */; };
@@ -61,6 +62,7 @@
 		FA97D93F22A23D1C003529EC /* Pure_DividendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97D93E22A23D1C003529EC /* Pure_DividendsTests.swift */; };
 		FA97D94A22A23D1C003529EC /* Pure_DividendsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97D94922A23D1C003529EC /* Pure_DividendsUITests.swift */; };
 		FAC55ECF22E40470001AF0ED /* StocksStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC55ECE22E40470001AF0ED /* StocksStorage.swift */; };
+		FAF4893B230794730066E9E6 /* CompoundCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF4893A230794730066E9E6 /* CompoundCalculatorTests.swift */; };
 		FAFB495522A9B0AC006FE490 /* CompundInterstCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB495422A9B0AC006FE490 /* CompundInterstCalculatorTests.swift */; };
 		FAFB495722A9B31E006FE490 /* CompundInterstCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB495622A9B31E006FE490 /* CompundInterstCalculator.swift */; };
 /* End PBXBuildFile section */
@@ -159,6 +161,7 @@
 		B4AA8B21833CCA1F13569B00 /* Pods_Pure_Dividends_PDPersistence_PDPersistenceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_Dividends_PDPersistence_PDPersistenceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C62E16E298C3603CCC0EED /* Pods_Pure_Dividends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pure_Dividends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56F61D3E8542FAAB3417606 /* Pods-Pure Dividends-PDPersistence-PDPersistenceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure Dividends-PDPersistence-PDPersistenceTests.release.xcconfig"; path = "Target Support Files/Pods-Pure Dividends-PDPersistence-PDPersistenceTests/Pods-Pure Dividends-PDPersistence-PDPersistenceTests.release.xcconfig"; sourceTree = "<group>"; };
+		FA0461032308B5EF00907E6F /* TickerSearchResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerSearchResultItem.swift; sourceTree = "<group>"; };
 		FA5845BF23023A220078C2AD /* AddStockRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStockRouter.swift; sourceTree = "<group>"; };
 		FA5845C023023A220078C2AD /* AddStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStockViewController.swift; sourceTree = "<group>"; };
 		FA5845C123023A220078C2AD /* AddStockBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStockBuilder.swift; sourceTree = "<group>"; };
@@ -214,6 +217,7 @@
 		FA97D94922A23D1C003529EC /* Pure_DividendsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pure_DividendsUITests.swift; sourceTree = "<group>"; };
 		FA97D94B22A23D1C003529EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAC55ECE22E40470001AF0ED /* StocksStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksStorage.swift; sourceTree = "<group>"; };
+		FAF4893A230794730066E9E6 /* CompoundCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundCalculatorTests.swift; sourceTree = "<group>"; };
 		FAFB495422A9B0AC006FE490 /* CompundInterstCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompundInterstCalculatorTests.swift; sourceTree = "<group>"; };
 		FAFB495622A9B31E006FE490 /* CompundInterstCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompundInterstCalculator.swift; sourceTree = "<group>"; };
 		FCD7A7C0BFD4521E10D25BC5 /* Pods-Pure DividendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pure DividendsTests.debug.xcconfig"; path = "Target Support Files/Pods-Pure DividendsTests/Pods-Pure DividendsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 				FA66621822C968D100E65AC7 /* StockModel.swift */,
 				FA6661D422C84A6500E65AC7 /* Session.swift */,
 				FA90DFA822ECFD630062F38F /* StockQuoteModel.swift */,
+				FA0461032308B5EF00907E6F /* TickerSearchResultItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -523,6 +528,7 @@
 				FA6661CE22C8404C00E65AC7 /* Services */,
 				FA97D93E22A23D1C003529EC /* Pure_DividendsTests.swift */,
 				FA97D94022A23D1C003529EC /* Info.plist */,
+				FAF4893A230794730066E9E6 /* CompoundCalculatorTests.swift */,
 			);
 			path = "Pure DividendsTests";
 			sourceTree = "<group>";
@@ -1097,6 +1103,7 @@
 				FA90DFA622ECC0B30062F38F /* StockDetailsBuilder.swift in Sources */,
 				FA6661EA22C8632B00E65AC7 /* StockViewModel.swift in Sources */,
 				FA5845C623023A220078C2AD /* AddStockInteractor.swift in Sources */,
+				FA0461042308B5EF00907E6F /* TickerSearchResultItem.swift in Sources */,
 				FA6661E422C8522F00E65AC7 /* PortfolioListInteractor.swift in Sources */,
 				FA90DFA922ECFD630062F38F /* StockQuoteModel.swift in Sources */,
 				FAC55ECF22E40470001AF0ED /* StocksStorage.swift in Sources */,
@@ -1124,6 +1131,7 @@
 				FAFB495522A9B0AC006FE490 /* CompundInterstCalculatorTests.swift in Sources */,
 				FA66621E22C96F7600E65AC7 /* IEXServiceTests.swift in Sources */,
 				FA97D93F22A23D1C003529EC /* Pure_DividendsTests.swift in Sources */,
+				FAF4893B230794730066E9E6 /* CompoundCalculatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

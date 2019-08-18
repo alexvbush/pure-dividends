@@ -9,13 +9,13 @@
 import RIBs
 
 protocol AddStockDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
+    var iexService: IEXServiceInterface { get }
 }
 
 final class AddStockComponent: Component<AddStockDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    fileprivate var iexService: IEXServiceInterface {
+        return dependency.iexService
+    }
 }
 
 // MARK: - Builder
@@ -33,7 +33,8 @@ final class AddStockBuilder: Builder<AddStockDependency>, AddStockBuildable {
     func build(withListener listener: AddStockListener) -> AddStockRouting {
         let component = AddStockComponent(dependency: dependency)
         let viewController = AddStockViewController()
-        let interactor = AddStockInteractor(presenter: viewController)
+        let interactor = AddStockInteractor(presenter: viewController,
+                                            iexService: component.iexService)
         interactor.listener = listener
         return AddStockRouter(interactor: interactor, viewController: viewController)
     }

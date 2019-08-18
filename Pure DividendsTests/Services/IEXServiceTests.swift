@@ -13,7 +13,9 @@ import RxSwift
 import PDNetworking
 
 final class IEXClientMock: IEXClientInterface {
-    
+    func getQuote(ticker: Ticker) -> Observable<Dictionary<String, Any>> {
+        return Observable.empty()
+    }
     var getPriceCallCount = 0
     
     var getPriceHandler: ((_ ticker: String) -> Observable<Double>)?
