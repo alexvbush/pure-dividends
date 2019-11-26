@@ -25,6 +25,7 @@ final class StockCell: UITableViewCell {
         self.tickerLabel = tickerLabel
         
         let nameLabel = UILabel()
+        nameLabel.numberOfLines = 0
         self.nameLabel = nameLabel
         
         let priceLabel = UILabel()
@@ -32,27 +33,28 @@ final class StockCell: UITableViewCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(tickerLabel)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(priceLabel)
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+
+        stackView.addArrangedSubview(tickerLabel)
+        stackView.addArrangedSubview(nameLabel)
+        let bufferView = UIView()
+        bufferView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(bufferView)
+        stackView.addArrangedSubview(priceLabel)
+        contentView.addSubview(stackView)
         
-        tickerLabel.snp.makeConstraints { (maker) in
-            maker.centerY.equalToSuperview()
+        stackView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview().offset(20)
-            maker.width.equalTo(50)
+            maker.trailing.equalToSuperview().offset(-20)
+            maker.top.equalToSuperview().offset(20)
+            maker.bottom.equalToSuperview().offset(-20)
         }
         
-        nameLabel.snp.makeConstraints { (maker) in
-            maker.centerY.equalToSuperview()
-//            maker.top.bottom.equalToSuperview()
-            maker.leading.equalTo(tickerLabel.snp.trailing).offset(20)
-            maker.trailing.equalTo(priceLabel.snp.leading)
+        bufferView.snp.makeConstraints { (maker) in
+            maker.height.equalTo(priceLabel.snp.height)
         }
-        
-        priceLabel.snp.makeConstraints { (maker) in
-            maker.centerY.equalToSuperview()
-            maker.trailing.equalToSuperview().inset(20)
-        }
-        priceLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
 }
