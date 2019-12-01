@@ -20,7 +20,7 @@ class PDNetworkingTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
+    func testGetPrice() {
         
         let expectation = XCTestExpectation()
         
@@ -35,4 +35,17 @@ class PDNetworkingTests: XCTestCase {
         wait(for: [expectation], timeout: 2)
     }
 
+    func testGetEarnings() {
+        let expectation = XCTestExpectation()
+        
+        let client = IEXClient(manager: SessionManager.default)
+        let _ = client.getEarnings(ticker: "AAPL").subscribe(onNext: { (newPrice) in
+            print("new price: \(newPrice)")
+            expectation.fulfill()
+        }, onError: { (error) in
+            print("error: \(error)")
+        })
+        
+        wait(for: [expectation], timeout: 2)
+    }
 }

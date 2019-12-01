@@ -16,6 +16,7 @@ public protocol IEXClientInterface {
     func getPrice(ticker: Ticker) -> Observable<Double>
     func getQuote(ticker: Ticker) -> Observable<Dictionary<String, Any>>
     func getSearch(ticker: Ticker) -> Observable<[Dictionary<String, String>]>
+    func getEarnings(ticker: Ticker) -> Observable<[Dictionary<String, Any>]>
 }
 
 public final class IEXClient: IEXClientInterface {
@@ -46,6 +47,13 @@ public final class IEXClient: IEXClientInterface {
         let url = URL(string: "https://sandbox.iexapis.com/v1/search/\(ticker)?token=\(token)")!
         return manager.rx.json(.get, url).map { (response) -> [Dictionary<String, String>] in
             return response as! [Dictionary<String, String>]
+        }
+    }
+    
+    public func getEarnings(ticker: Ticker) -> Observable<[Dictionary<String, Any>]> {
+        let url = URL(string: "https://sandbox.iexapis.com/v1/stock/\(ticker)/earnings?token=\(token)")!
+        return manager.rx.json(.get, url).map { (response) -> [Dictionary<String, Any>] in
+            return response as! [Dictionary<String, Any>]
         }
     }
 }

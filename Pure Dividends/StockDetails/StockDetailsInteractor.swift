@@ -56,6 +56,12 @@ final class StockDetailsInteractor: PresentableInteractor<StockDetailsPresentabl
         }).disposeOnDeactivate(interactor: self)
     }
     
+    override func willResignActive() {
+        
+        // cleanup
+        super.willResignActive()
+    }
+    
     func goBack() {
         listener?.didComplete(self)
     }

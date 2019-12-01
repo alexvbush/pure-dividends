@@ -47,7 +47,6 @@ final class RootInteractor: PresentableInteractor<RootPresentable>, RootInteract
         // TODO: Implement business logic here.
         
         if let _ = sessionManager.currentSession() {
-            presenter.showLoggedIn()
             router?.routeToMainScreen()
         } else {
             presenter.showLoggedOut()
